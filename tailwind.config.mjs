@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 export default {
   darkMode: ["class"],
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -12,6 +15,12 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Nunito Sans', ...defaultTheme.fontFamily.sans],
+      },
+      objectPosition: {
+        'center-left': 'center left',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
