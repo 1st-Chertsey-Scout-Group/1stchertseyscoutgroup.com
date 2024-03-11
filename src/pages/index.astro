@@ -1,0 +1,39 @@
+---
+import BaseLayout from "@/layouts/base.layout.astro";
+import { Image } from "astro:assets";
+import CoverImage from "@/media/cover-photo.jpg";
+import GroupBadge from "@/media/group-badge.png";
+---
+
+<BaseLayout title="Under Construction">
+	<div class="relative bg-gradient-to-r from-gray-800 to-gray-700">
+		<div class="absolute inset-0">
+			<Image
+				src={CoverImage}
+				alt="A photo of 2 scouts ziplining"
+				class="w-full h-full object-cover opacity-60 object-left"
+			/>
+		</div>
+		<div
+			class="relative max-w-screen-xl mx-auto px-8 z-10 text-center text-white h-screen flex justify-center flex-col"
+		>
+			<Image
+				src={GroupBadge}
+				class="p-3 mx-auto w-72"
+				width={GroupBadge.width}
+				alt="The 1st Chertsey Scout Group badge"
+			/>
+			<h1
+				class="text-4xl md:text-5xl font-extrabold leading-tight pb-6 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+			>
+				<span class="block md:inline-block">1st Chertsey</span>
+				<span class="block md:inline-block">Scout Group</span>
+			</h1>
+			<p
+				class="text-lg md:text-xl pb-8 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+			>
+				Home of Scouting in Chertsey
+			</p>
+		</div>
+	</div>
+</BaseLayout>
