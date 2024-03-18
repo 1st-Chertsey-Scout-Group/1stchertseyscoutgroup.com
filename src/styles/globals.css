@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -9,68 +9,395 @@
 
     --card: 0 0% 100%;
     --card-foreground: 20 14.3% 4.1%;
- 
+
     --popover: 0 0% 100%;
     --popover-foreground: 20 14.3% 4.1%;
- 
-    --primary: 24 9.8% 10%;
+
+    --primary: 0 72% 51%;
     --primary-foreground: 60 9.1% 97.8%;
- 
+
     --secondary: 60 4.8% 95.9%;
     --secondary-foreground: 24 9.8% 10%;
- 
+
     --muted: 60 4.8% 95.9%;
     --muted-foreground: 25 5.3% 44.7%;
- 
+
     --accent: 60 4.8% 95.9%;
     --accent-foreground: 24 9.8% 10%;
- 
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 60 9.1% 97.8%;
 
     --border: 20 5.9% 90%;
     --input: 20 5.9% 90%;
     --ring: 20 14.3% 4.1%;
- 
+
     --radius: 0.5rem;
   }
- 
+
   .dark {
     --background: 20 14.3% 4.1%;
     --foreground: 60 9.1% 97.8%;
- 
+
     --card: 20 14.3% 4.1%;
     --card-foreground: 60 9.1% 97.8%;
- 
+
     --popover: 20 14.3% 4.1%;
     --popover-foreground: 60 9.1% 97.8%;
- 
+
     --primary: 60 9.1% 97.8%;
     --primary-foreground: 24 9.8% 10%;
- 
+
     --secondary: 12 6.5% 15.1%;
     --secondary-foreground: 60 9.1% 97.8%;
- 
+
     --muted: 12 6.5% 15.1%;
     --muted-foreground: 24 5.4% 63.9%;
- 
+
     --accent: 12 6.5% 15.1%;
     --accent-foreground: 60 9.1% 97.8%;
- 
+
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 60 9.1% 97.8%;
- 
+
     --border: 12 6.5% 15.1%;
     --input: 12 6.5% 15.1%;
     --ring: 24 5.7% 82.9%;
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
   }
+
+  *,
+  :after,
+  :before {
+    @apply box-border;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply m-0 text-base font-normal text-left bg-background text-foreground;
+  }
+
+  html {
+    @apply leading-5 font-sans;
+  }
+
+  article,
+  aside,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  main,
+  nav,
+  section {
+    @apply block;
+  }
+
+  [tabindex="-1"]:focus:not(:focus-visible) {
+    @apply !outline-0;
+  }
+
+  hr {
+    @apply box-content h-0 overflow-visible;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply pt-0 pb-2;
+  }
+
+  p {
+    @apply pt-0 pb-4;
+  }
+
+  abbr[data-original-title],
+  abbr[title] {
+    @apply underline outline-dotted cursor-help border-b;
+  }
+
+  address {
+    @apply not-italic leading-none;
+  }
+
+  address,
+  dl,
+  ol,
+  ul {
+    @apply pb-4;
+  }
+
+  dl,
+  ol,
+  ul {
+    @apply mt-0;
+  }
+
+  ol ol,
+  ol ul,
+  ul ol,
+  ul ul {
+    @apply mb-0;
+  }
+
+  dt {
+    @apply font-bold;
+  }
+
+  dd {
+    @apply pb-2 ml-0;
+  }
+
+  blockquote {
+    @apply m-0 pb-4;
+  }
+
+  b,
+  strong {
+    @apply font-bold;
+  }
+
+  small {
+    @apply text-sm;
+  }
+
+  sub,
+  sup {
+    @apply relative text-xs leading-none align-baseline;
+  }
+
+  sub {
+    @apply -bottom-2;
+  }
+
+  sup {
+    @apply -top-2;
+  }
+
+  a {
+    @apply text-primary no-underline bg-transparent;
+  }
+
+  a:hover {
+    @apply underline underline-offset-2;
+  }
+
+  a:not([href]),
+  a:not([href]):hover {
+    @apply no-underline text-inherit;
+  }
+
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono,
+      Courier New, monospace;
+    @apply text-base;
+  }
+
+  pre {
+    @apply mt-0 pb-4 overflow-auto;
+  }
+
+  figure {
+    @apply m-0 pb-4;
+  }
+
+  img {
+    @apply border-none;
+  }
+
+  img,
+  svg {
+    @apply align-middle;
+  }
+
+  svg {
+    @apply overflow-hidden;
+  }
+
+  table {
+    @apply border-collapse;
+  }
+
+  caption {
+    @apply py-3 text-left caption-bottom;
+  }
+
+  .label,
+  label {
+    @apply inline-block pb-2;
+  }
+
+  button {
+    @apply rounded-none;
+  }
+
+  button:focus {
+    @apply outline-dotted outline-1;
+  }
+
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    @apply m-0;
+  }
+
+  button,
+  input {
+    @apply overflow-visible;
+  }
+
+  button,
+  select {
+    @apply not-italic;
+  }
+
+  [type="button"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  button:not(:disabled) {
+    @apply cursor-pointer;
+  }
+
+  [type="button"]::-moz-focus-inner,
+  [type="reset"]::-moz-focus-inner,
+  [type="submit"]::-moz-focus-inner,
+  button::-moz-focus-inner {
+    @apply p-0 border-none;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    @apply box-border p-0;
+  }
+
+  textarea {
+    @apply overflow-auto resize-y;
+  }
+
+  fieldset {
+    @apply min-w-0 p-0 m-0 border-0;
+  }
+
+  legend {
+    @apply block w-full max-w-full p-0 pb-2 text-2xl text-inherit whitespace-normal;
+  }
+
+  progress {
+    @apply align-baseline;
+  }
+
+  [type="number"]::-webkit-inner-spin-button,
+  [type="number"]::-webkit-outer-spin-button {
+    @apply h-auto;
+  }
+
+  [type="search"] {
+    @apply -outline-offset-2 appearance-none;
+  }
+
+  [type="search"]::-webkit-search-decoration {
+    @apply appearance-none;
+  }
+
+  output {
+    @apply inline-block;
+  }
+
+  summary {
+    @apply list-item cursor-pointer;
+  }
+
+  template {
+    @apply hidden;
+  }
+
+  [hidden] {
+    @apply !hidden;
+  }
+
+  .h1,
+  .h2,
+  .h3,
+  .h4,
+  .h5,
+  .h6,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply pb-2 font-black leading-5;
+  }
+
+  .h1,
+  h1 {
+    @apply text-5xl;
+  }
+
+  .h2,
+  h2 {
+    @apply text-4xl;
+  }
+
+  .h3,
+  h3 {
+    @apply text-3xl;
+  }
+
+  .h4,
+  h4 {
+    @apply text-2xl;
+  }
+
+  .h5,
+  h5 {
+    @apply text-xl;
+  }
+
+  .h6,
+  h6 {
+    @apply text-lg;
+  }
+
+  hr {
+    @apply py-4 border-0 border-solid border-gray-900 border-t;
+  }
+
+  mark {
+    @apply p-1 text-yellow-50;
+  }
+
+  code {
+    @apply text-sm text-pink-300 break-words;
+  }
+
+  a > code {
+    @apply text-inherit;
+  }
+
+  kbd {
+    @apply px-2 py-1 text-sm;
+  }
+
+  kbd kbd {
+    @apply p-0 text-base font-bold;
+  }
+
+  pre {
+    @apply block text-sm;
   }
 }
