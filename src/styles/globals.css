@@ -7,6 +7,9 @@
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;
 
+    --alternative-background: 0 0% 95%;
+    --alternative-foreground: 20 14.3% 4.1%;
+
     --card: 0 0% 100%;
     --card-foreground: 20 14.3% 4.1%;
 
@@ -38,6 +41,9 @@
   .dark {
     --background: 20 14.3% 4.1%;
     --foreground: 60 9.1% 97.8%;
+
+    --alternative-background: 20 14.3% 4.1%;
+    --alternative-foreground: 60 9.1% 97.8%;
 
     --card: 20 14.3% 4.1%;
     --card-foreground: 60 9.1% 97.8%;

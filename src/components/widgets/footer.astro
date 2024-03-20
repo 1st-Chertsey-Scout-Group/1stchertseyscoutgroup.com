@@ -1,0 +1,74 @@
+---
+import { Container } from "../ui/container";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="p-4 xl:text-left text-center bg-alternative text-alternative-foreground">
+  <Container>
+    <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+      <div class="col-span-2 lg:col-span-3 xl:col-span-2">
+        <h5 class="uppercase font-bold mb-4">1st Chertsey Scout Group</h5>
+        <div class="space-y-2">
+          <p>
+            Established in 1909, 1st Chertsey Scout Group continues to thrive,
+            providing fun, adventure, and development opportunities.
+          </p>
+          <p>
+            At present, over 100 young people take part in activities each week,
+            with a diverse programme provided by an experienced team of
+            volunteer leaders and parent helpers.
+          </p>
+        </div>
+      </div>
+      <div>
+        <h5 class="uppercase font-bold mb-4">Useful link</h5>
+        <ul class="space-y-2">
+          <li>
+            <a href="https://www.facebook.com/1stchertseyscoutgroup">
+              Our Facebook
+            </a>
+          </li>
+          <li><a href="/sections"> Sections </a></li>
+          <li>
+            <a href="https://www.justgiving.com/chertseyscouts">Donate</a>
+          </li>
+          <li><a href="/news">News</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="uppercase font-bold mb-4">More Information</h5>
+        <ul class="space-y-2">
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/cookies">Cookies</a></li>
+          <li><a href="/site-map">Site Map</a></li>
+        </ul>
+      </div>
+      <div class="col-span-2 lg:col-span-1">
+        <h5 class="uppercase font-bold mb-4">Our HQ</h5>
+        <div class="space-y-1">
+          <p class="pb-0">
+            Registered Charity:
+            <a
+              href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/1055895/charity-overview"
+            >
+              1055895
+            </a>
+          </p>
+          <p class="pb-0">1st Chertsey Scout Group</p>
+          <p class="pb-0">Scout HQ, Staines Lane</p>
+          <p class="pb-0">Chertsey</p>
+          <p class="pb-0">Surrey</p>
+          <p class="pb-0">KT16 8PS</p>
+        </div>
+      </div>
+    </div>
+  </Container>
+</footer>
+
+<div class="bg-alternative text-alternative-foreground text-center">
+  <span>
+    © {year}
+    <a href="/"> 1st Chertsey Scout Group </a> All Rights Reserved.
+  </span>
+</div>
