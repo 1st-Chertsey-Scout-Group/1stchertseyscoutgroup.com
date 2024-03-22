@@ -51,7 +51,12 @@ export const navigation: Array<MenuLink | ActionLink> = [
       {
         type: "link",
         text: "Our Group",
-        href: "/about-us/our-group",
+        href: "/our-group",
+      },
+      {
+        type: "link",
+        text: "Our History",
+        href: "/our-history",
       },
     ],
   },
@@ -64,6 +69,6 @@ export const navigation: Array<MenuLink | ActionLink> = [
   {
     type: "link",
     text: "Contact",
-    href: "/contact",
+    href: "/get-in-touch",
   },
 ];

@@ -1,13 +1,18 @@
 ---
+import { Container } from "@/components/ui/container";
 import BaseLayout from "./base.layout.astro";
 
-interface Props {
+interface ErrorProps {
   title: string;
 }
 
-const { title } = Astro.props.frontmatter || Astro.props;
+const { title }: ErrorProps = Astro.props.frontmatter || Astro.props;
 ---
 
 <BaseLayout title={title}>
-  <slot />
+  <main class="bg-background">
+    <Container className="py-4">
+      <slot />
+    </Container>
+  </main>
 </BaseLayout>

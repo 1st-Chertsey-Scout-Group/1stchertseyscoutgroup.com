@@ -4,11 +4,13 @@ import { Container } from "../ui/container";
 const year = new Date().getFullYear();
 ---
 
-<footer class="p-4 xl:text-left text-center bg-alternative text-alternative-foreground">
+<footer
+  class="bg-alternative p-4 text-center text-alternative-foreground xl:text-left"
+>
   <Container>
-    <div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+    <div class="grid grid-cols-2 gap-8 lg:grid-cols-3 xl:grid-cols-5">
       <div class="col-span-2 lg:col-span-3 xl:col-span-2">
-        <h5 class="uppercase font-bold mb-4">1st Chertsey Scout Group</h5>
+        <h5 class="mb-4 font-bold uppercase">1st Chertsey Scout Group</h5>
         <div class="space-y-2">
           <p>
             Established in 1909, 1st Chertsey Scout Group continues to thrive,
@@ -22,7 +24,7 @@ const year = new Date().getFullYear();
         </div>
       </div>
       <div>
-        <h5 class="uppercase font-bold mb-4">Useful link</h5>
+        <h5 class="mb-4 font-bold uppercase">Useful link</h5>
         <ul class="space-y-2">
           <li>
             <a href="https://www.facebook.com/1stchertseyscoutgroup">
@@ -37,7 +39,7 @@ const year = new Date().getFullYear();
         </ul>
       </div>
       <div>
-        <h5 class="uppercase font-bold mb-4">More Information</h5>
+        <h5 class="mb-4 font-bold uppercase">More Information</h5>
         <ul class="space-y-2">
           <li><a href="/privacy-policy">Privacy Policy</a></li>
           <li><a href="/cookies">Cookies</a></li>
@@ -45,7 +47,7 @@ const year = new Date().getFullYear();
         </ul>
       </div>
       <div class="col-span-2 lg:col-span-1">
-        <h5 class="uppercase font-bold mb-4">Our HQ</h5>
+        <h5 class="mb-4 font-bold uppercase">Our HQ</h5>
         <div class="space-y-1">
           <p class="pb-0">
             Registered Charity:
@@ -66,7 +68,7 @@ const year = new Date().getFullYear();
   </Container>
 </footer>
 
-<div class="bg-alternative text-alternative-foreground text-center">
+<div class="bg-alternative text-center text-alternative-foreground">
   <span>
     © {year}
     <a href="/"> 1st Chertsey Scout Group </a> All Rights Reserved.
