@@ -4,7 +4,6 @@ import { ThemeSwitcher } from "./theme-switcher";
 import type { ActionLink, MenuLink } from "@/types";
 import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
 import { assertIsNode, cn } from "@/lib/utils";
-import clsx from "clsx";
 
 type HeaderNavigationProps = {
   links: Array<MenuLink | ActionLink>;

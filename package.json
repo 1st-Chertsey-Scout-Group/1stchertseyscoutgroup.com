@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "clean": "rm -rf dist",
-    "build": "astro build",
+    "build": "rm -rf dist && astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

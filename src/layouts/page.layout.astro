@@ -16,7 +16,7 @@ interface PageProps {
   title: string;
 }
 
-const { title } = Astro.props.frontmatter || Astro.props;
+const { title }: PageProps = Astro.props.frontmatter || Astro.props;
 ---
 
 <BaseLayout title={title}>
