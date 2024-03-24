@@ -5,24 +5,24 @@
 @layer base {
   :root {
     --transparent: transparent;
-    --white: #FFFFFF;
+    --white: #ffffff;
 
-    --background: #FFFFFF;
-    --foreground: #0C0A09;
+    --background: #ffffff;
+    --foreground: #0c0a09;
 
     --alternative-background: #fafaf9;
-    --alternative-foreground: #0C0A09;
+    --alternative-foreground: #0c0a09;
 
-    --card: #FFFFFF;
-    --card-foreground: #0C0A09;
+    --card: #f1f1f1;
+    --card-foreground: #0c0a09;
 
-    --primary: #AB1C1C;
-    --primary-foreground: #FFFFFF;
+    --primary: #ab1c1c;
+    --primary-foreground: #ffffff;
 
-    --secondary: #17508B;
-    --secondary-foreground: #FFFFFF;
+    --secondary: #17508b;
+    --secondary-foreground: #ffffff;
 
-    --border: #E7E5E4;
+    --border: #e7e5e4;
 
     --radius: 0.5rem;
 
@@ -35,16 +35,16 @@
     --foreground: #a8a29e;
 
     --alternative-background: #1c1917;
-    --alternative-foreground: #FAFAF9;
+    --alternative-foreground: #fafaf9;
 
-    --card: #0C0A09;
-    --card-foreground: #FAFAF9;
+    --card: #0c0a09;
+    --card-foreground: #fafaf9;
 
     --primary: #911818;
-    --primary-foreground: #FFFFFF;
+    --primary-foreground: #ffffff;
 
     --secondary: #144476;
-    --secondary-foreground: #FFFFFF;
+    --secondary-foreground: #ffffff;
 
     --border: #141212;
 
