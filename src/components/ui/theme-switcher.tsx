@@ -60,7 +60,7 @@ class ThemeSwitcher extends Component<ThemeSwitcherProps, ThemeSwitcherState> {
 
   render() {
     return (
-      <button className="text-foreground" onClick={this.handleThemeToggle}>
+      <button aria-label="Theme switcher" className="text-foreground" onClick={this.handleThemeToggle}>
         {this.state.theme == "light" ? <Moon /> : <Sun />}
       </button>
     );

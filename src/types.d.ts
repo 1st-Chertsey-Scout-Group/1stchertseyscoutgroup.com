@@ -1,5 +1,10 @@
 import type { HTMLAttributes } from "astro/types";
 
+export interface QuickLink {
+  text?: string;
+  href?: string;
+}
+
 export interface CallToAction extends HTMLAttributes<a> {
   variant?: "primary" | "secondary" | "tertiary" | "link";
   text?: string;

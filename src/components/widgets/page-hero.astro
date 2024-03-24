@@ -1,11 +1,13 @@
 ---
+import type { QuickLink } from "@/types";
+
 interface HeroProps {
-  pageName: string;
+  title: string;
 }
 
-const { pageName = "UNSET" } = Astro.props as HeroProps;
+const { title } = Astro.props as HeroProps;
 ---
 
 <div class="bg-primary p-8 text-center text-5xl text-primary-foreground">
-  {pageName}
+  {title}
 </div>
