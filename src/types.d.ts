@@ -1,5 +1,11 @@
 import type { HTMLAttributes } from "astro/types";
 
+export interface SplitSlug {
+  year: string;
+  month: string;
+  day: string;
+}
+
 export interface QuickLink {
   text?: string;
   href?: string;

@@ -41,7 +41,7 @@ paths.forEach((text: string, index: number) => {
   if (matches && matches[2]) {
     text = matches[1];
   }
-  text = text.replace(/[-_0-9]/g, " ");
+  text = text.replace(/[-_]/g, " ");
   text = toTitleCase(text);
 
   parts = [

@@ -1,0 +1,23 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import NewsLayout from "../../../layouts/news.layout.astro";
+import { getYearFromSlug } from "@/lib/utils";
+
+export async function getStaticPaths() {
+  const newsCollection = await getCollection("news");
+  let all = newsCollection.map((news) => getYearFromSlug(news.slug));
+
+  let unique = [...new Set(all)];
+
+  return unique.map((i) => {
+    return { params: { year: i } };
+  });
+}
+type Props = CollectionEntry<"news">;
+
+const { year } = Astro.params;
+---
+
+<NewsLayout title={year}>
+  {year}
+</NewsLayout>
