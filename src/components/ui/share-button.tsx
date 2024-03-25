@@ -3,7 +3,7 @@ import { Share2 } from "lucide-react";
 import { Component } from "react";
 
 type ShareButtonProps = {
-    className?: string;
+  className?: string;
 };
 
 type ShareButtonState = {};
@@ -21,7 +21,11 @@ class ShareButton extends Component<ShareButtonProps, ShareButtonState> {
 
   render() {
     return (
-      <button aria-label="Share this page" className={cn(this.props.className)} onClick={this.handleShareClick}>
+      <button
+        aria-label="Share this page"
+        className={cn(this.props.className)}
+        onClick={this.handleShareClick}
+      >
         <Share2 aria-hidden="true" />
       </button>
     );

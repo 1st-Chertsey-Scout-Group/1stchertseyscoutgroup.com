@@ -11,6 +11,13 @@ export function assertIsNode(e: EventTarget | null): asserts e is Node {
   }
 }
 
+export function toTitleCase(str: string): string {
+  return str.replace(
+    /\w\S*/g,
+    (txt) => txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase()
+  );
+}
+
 function hasSlug(slug?: string): asserts slug is string {
   if (slug == undefined) {
     throw new Error("Slug is undefined");
