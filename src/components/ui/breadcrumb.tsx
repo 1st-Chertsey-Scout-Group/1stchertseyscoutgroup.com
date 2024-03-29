@@ -64,7 +64,7 @@ class Breadcrumb extends Component<BreadcrumbProps, BreadcrumbState> {
                 text="Home"
                 href="/"
                 location={false}
-                minimise={false}
+                minimise={true}
               />
               {this.state.items.map((props) => (
                 <BreadcrumbItem {...props} />

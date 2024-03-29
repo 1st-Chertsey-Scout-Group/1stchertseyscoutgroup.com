@@ -1,7 +1,9 @@
+import { cn } from "@/lib/utils";
 import { Component } from "react";
 
 type CardProps = {
-  children: React.ReactElement<CardHeader | CardFooter>[];
+  className?: string;
+  children: React.ReactElement<CardImage | CardBody>[];
 };
 
 type CardState = {};
@@ -15,7 +17,7 @@ class Card extends Component<CardProps, CardState> {
 
   render() {
     return (
-      <div className="p-2">
+      <div className={cn(this.props.className, "p-2 flex flex-col h-full")}>
         <div className="flex flex-col bg-card text-card-foreground h-full">
           {this.props.children}
         </div>
@@ -39,11 +41,51 @@ class CardImage extends Component<CardImageProps, CardImageState> {
   }
 
   render() {
-    return this.props.href ? (
-      <a href={this.props.href}>{this.props.children}</a>
-    ) : (
-      this.props.children
+    return (
+      <div className="relative h-60 max-h-60 overflow-hidden">
+        {this.props.href ? (
+          <a href={this.props.href}>{this.props.children}</a>
+        ) : (
+          this.props.children
+        )}
+      </div>
     );
+  }
+}
+
+type CardBodyProps = {
+  children: React.ReactElement<CardCaption | CardHeader | CardFooter>[];
+};
+
+type CardBodyState = {};
+
+class CardBody extends Component<CardBodyProps, CardBodyState> {
+  constructor(props: CardBodyProps) {
+    super(props);
+
+    this.state = {};
+  }
+
+  render() {
+    return <div className="p-4">{this.props.children}</div>;
+  }
+}
+
+type CardCaptionProps = {
+  children: React.ReactNode;
+};
+
+type CardCaptionState = {};
+
+class CardCaption extends Component<CardCaptionProps, CardCaptionState> {
+  constructor(props: CardCaptionProps) {
+    super(props);
+
+    this.state = {};
+  }
+
+  render() {
+    return <div className="text-sm pb-1">{this.props.children}</div>;
   }
 }
 
@@ -63,7 +105,7 @@ class CardHeader extends Component<CardHeaderProps, CardHeaderState> {
 
   render() {
     return (
-      <div className="pt-4 px-8 text-xl pb-1 font-black">
+      <div className="text-xl pb-1 font-black">
         {this.props.href ? (
           <a className="block text-card-foreground" href={this.props.href}>
             {this.props.children}
@@ -90,7 +132,7 @@ class CardContent extends Component<CardContentProps, CardContentState> {
   }
 
   render() {
-    return <div className="px-8 pb-4">{this.props.children}</div>;
+    return <p>{this.props.children}</p>;
   }
 }
 
@@ -110,11 +152,19 @@ class CardFooter extends Component<CardFooterProps, CardFooterState> {
 
   render() {
     return (
-      <a className="pb-6 px-8 font-bold mt-auto" href={this.props.href}>
+      <a className="font-bold mt-auto" href={this.props.href}>
         {this.props.children}
       </a>
     );
   }
 }
 
-export { Card, CardHeader, CardFooter, CardImage, CardContent };
+export {
+  Card,
+  CardBody,
+  CardHeader,
+  CardFooter,
+  CardImage,
+  CardContent,
+  CardCaption,
+};

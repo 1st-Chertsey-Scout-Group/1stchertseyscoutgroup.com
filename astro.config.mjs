@@ -8,5 +8,9 @@ import pageInsight from "astro-page-insight";
 export default defineConfig({
   integrations: [react(), tailwind({
     applyBaseStyles: false
-  }), pageInsight()]
+  }), pageInsight()],
+  build: {
+    assets: "_assets"
+  },
+  site: "https://1stchertsey.com"
 });

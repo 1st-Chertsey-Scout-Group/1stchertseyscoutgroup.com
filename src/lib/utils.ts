@@ -24,16 +24,16 @@ function hasSlug(slug?: string): asserts slug is string {
   }
 }
 
-function splitSlug(slug?: string): [string, string, string] {
+function splitSlug(slug?: string): [string, string] {
   hasSlug(slug);
 
   var split = slug.split("/");
 
-  if (split.length < 3) {
-    throw new Error("Cant get Year, month and day from slug");
+  if (split.length < 2) {
+    throw new Error("Cant get Year, month from slug");
   }
 
-  return [split[0], split[1], split[2]];
+  return [split[0], split[1]];
 }
 
 export function getYearFromSlug(slug?: string): string {
@@ -46,10 +46,4 @@ export function getMonthFromSlug(slug?: string): string {
   var split = splitSlug(slug);
 
   return split[1];
-}
-
-export function getDayFromSlug(slug?: string): string {
-  var split = splitSlug(slug);
-
-  return split[2];
 }

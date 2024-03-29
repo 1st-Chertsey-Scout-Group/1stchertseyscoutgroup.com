@@ -1,0 +1,36 @@
+---
+import {
+  Card,
+  CardBody,
+  CardCaption,
+  CardContent,
+  CardHeader,
+  CardImage,
+} from "@/components/ui/card";
+import { Image } from "astro:assets";
+
+import placeholder from "@/media/cover-photo.jpg";
+
+import moment from 'moment';
+import type { CollectionEntry } from "astro:content";
+
+interface NewsItemProps {
+  item: CollectionEntry<"news">;
+}
+
+const { item } = Astro.props as NewsItemProps;
+const date = moment(item.data.date).format('Do MMMM YYYY');
+---
+
+<div class="md:w-1/2 lg:w-1/3">
+  <Card>
+    <CardImage href={"/news/" + item.slug}>
+      <Image loading={"lazy"} src={item.data.thumbnail ?? placeholder} alt={item.data.title} quality={5} />
+    </CardImage>
+    <CardBody>
+      <CardCaption>{date}</CardCaption>
+      <CardHeader href={"/news/" + item.slug}>{item.data.title}</CardHeader>
+      <CardContent>{item.data.excerpt}</CardContent>
+    </CardBody>
+  </Card>
+</div>
