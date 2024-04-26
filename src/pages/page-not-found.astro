@@ -1,7 +1,106 @@
 ---
 import ErrorLayout from "@/layouts/error.layout.astro";
+
+const titles: string[] = [
+  "A Journey Unplanned!",
+  "Gone with the Click!",
+  "Into the Unknown!",
+  "Lost and Found?",
+  "Lost in Cyberspace!",
+  "Lost in the Digital Woods!",
+  "Lost in the Wilderness!",
+  "Off on an Adventure!",
+  "Off on an Expedition!",
+  "Off the Beaten Path!",
+  "The Great Digital Expedition!",
+  "The Mystery of the Missing Page!",
+  "Trailblazer Page!",
+  "Trailblazing Page!",
+  "Wanderlust Page!",
+  "Where Could It Be?",
+  "Where Could It Roam?",
+  "Where Did It Disappear?",
+  "Where Did It Wander Off?",
+];
+
+const subTitles: string[] = [
+  "Looks like this page has embarked on its own adventure.",
+  "Looks like this page has gone off the map.",
+  "Looks like this page has gone off the radar.",
+  "Looks like this page has set off on a grand adventure.",
+  "Looks like this page has taken a solo hike.",
+  "Looks like this page has taken an unexpected turn.",
+  "Looks like this page has wandered off the trail.",
+  "Looks like this page is on a solo expedition.",
+  "Seems like this page has gone off the grid.",
+  "Seems like this page has set off on a quest.",
+  "Seems like this page has vanished into thin air.",
+  "Seems like this page is charting its own course.",
+  "Seems like this page is off on its own journey.",
+  "Seems like this page is off on its own quest.",
+  "This page seems to have caught the adventure bug.",
+  "This page seems to have forged its own path.",
+  "This page seems to have taken a detour.",
+  "This page seems to have taken a digital hike.",
+  "This page seems to have ventured into uncharted territory.",
+];
+
+const bodies: string[] = [
+  "Don't worry, our scouts are adept at tracking down lost things. While we search for this wandering page, why not journey through other sections of our website? You might stumble upon a delightful surprise! Happy scouting!",
+  "Don't worry, our scouts are always on the lookout. While we track down this wandering page, why not delve into other sections of our website? You might discover something unexpected! Happy exploring!",
+  "Don't worry, our scouts are always up for a challenge. While we track down this adventurous page, why not explore other paths on our website? You might find something unexpected! Happy scouting!",
+  "Don't worry, our scouts are on the lookout. While we search for this wandering page, why not explore other corners of our website? You might uncover something unexpected! Happy exploring!",
+  "Don't worry, our scouts are skilled in the art of exploration. While we search for this missing page, why not delve into other sections of our website? You might stumble upon a delightful surprise! Happy scouting!",
+  "Fear not, our scouts are adept at navigating uncharted territory. While we search for this elusive page, why not explore other avenues of our website? You might stumble upon a hidden treasure! Happy exploring!",
+  "Fear not, our scouts are always ready for a challenge. While we search for this missing page, why not explore other paths on our website? You might discover something remarkable! Happy exploring!",
+  "Fear not, our scouts are always up for a challenge. While we track down this adventurous page, why not journey through other parts of our website? You might discover something extraordinary! Happy exploring!",
+  "Fear not, our scouts are masters of exploration. While we seek out this adventurous page, why not venture into other corners of our website? You might stumble upon an exciting find! Happy scouting!",
+  "Fear not, our scouts are on the case. While we track down this wandering page, why not explore other parts of our website? You might uncover something extraordinary! Happy exploring!",
+  "Fear not, our scouts are skilled at finding their way. While we track down this elusive page, why not explore other avenues on our website? You might stumble upon a digital treasure! Happy scouting!",
+  "Fear not, our scouts are skilled at solving mysteries. While we search for this elusive page, why not explore other avenues on our website? You might stumble upon a hidden gem! Happy scouting!",
+  "Fear not, our scouts thrive on adventures. While we track down this elusive page, why not explore other corners of our website? You might stumble upon something remarkable! Happy exploring!",
+  "No need to fret, our scouts are adept at quests. While we track down this wandering page, why not venture into other parts of our website? You might uncover a hidden gem! Happy exploring!",
+  "No worries, our scouts are adept at exploring new frontiers. While we search for this adventurous page, why not explore other paths on our website? You might find a treasure trove of surprises! Happy scouting!",
+  "No worries, our scouts are always prepared for the unexpected. While we track down this adventurous page, why not explore other trails on our website? You might find a treasure trove of surprises! Happy scouting!",
+  "No worries, our scouts are always ready for a challenge. While we track down this elusive page, why not journey through other parts of our website? You might discover something unexpected! Happy exploring!",
+  "No worries, our scouts are experts at navigating through challenges. While we track down this adventurous page, why not explore other trails on our website? You might find a hidden treasure! Happy scouting!",
+  "No worries, our scouts are experts at navigating through the wilderness. While we search for this elusive page, why not venture into other parts of our website? You might discover something extraordinary! Happy exploring!",
+  "No worries, our scouts are on the case. While we track down this wandering page, why not explore other parts of our website? You might uncover something extraordinary! Happy exploring!",
+];
 ---
 
 <ErrorLayout title="Page not found">
-Page not found
+  <div>
+    <h1>
+      {titles[Math.floor(Math.random() * titles.length)]}
+    </h1>
+    <h2>
+      {subTitles[Math.floor(Math.random() * subTitles.length)]}
+    </h2>
+    <p>
+      {bodies[Math.floor(Math.random() * bodies.length)]}
+    </p>
+    <p>Here are some useful links:</p>
+    <div>
+      <ul>
+        <li>
+            <a href="/"> Home </a>
+          </li>
+        <li>
+          <a href="/news"> News </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/1stchertseyscoutgroup"> Facebook </a>
+        </li>
+        <li>
+          <a href="https://www.onlinescoutmanager.co.uk/login.php">
+            Online Scout Manager Portal
+          </a>
+        </li>
+      </ul>
+      <p>
+        Need to get in touch? <a href="/get-in-touch">Contact us</a>
+      </p>
+    </div>
+  </div>
 </ErrorLayout>
