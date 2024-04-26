@@ -1,0 +1,32 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import NewsLayout from "../../../../layouts/news.layout.astro";
+import { getYearFromSlug, getMonthFromSlug } from "@/lib/utils";
+import NewsList from "@/components/widgets/news-list.astro";
+
+export async function getStaticPaths() {
+  const newsCollection = await getCollection("news");
+  let all = newsCollection.map((news) => ({
+    year: getYearFromSlug(news.slug),
+    month: getMonthFromSlug(news.slug),
+  }));
+
+  let unique = [...new Set(all)];
+
+  return unique.map((i) => {
+    return { params: { year: i.year, month: i.month } };
+  });
+}
+type Props = CollectionEntry<"news">;
+
+const { year, month } = Astro.params;
+
+const newsCollection = await getCollection("news");
+const news = newsCollection
+  .filter((item) => item.slug.startsWith(`${year}/${month}/`))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<NewsLayout title="News">
+  <NewsList news={news} />
+</NewsLayout>

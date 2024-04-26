@@ -61,6 +61,11 @@ export const navigation: Array<MenuLink | ActionLink> = [
     ],
   },
   {
+    type: "link",
+    text: "News",
+    href: "/news",
+  },
+  {
     type: "action",
     text: "Donate",
     variant: "primary",

@@ -5,7 +5,7 @@ import { HeaderNavigation } from "@/components/ui/header-navigation";
 
 import { navigation } from "../lib/navigation";
 import { Container } from "@/components/ui/container";
-import Breadcrumbs from "../components/widgets/breadcrumbs.astro";
+import { Breadcrumb } from "../components/ui/breadcrumb";
 import Footer from "../components/widgets/footer.astro";
 import PageHero from "../components/widgets/page-hero.astro";
 import JoinUs from "../components/widgets/join-us.astro";
@@ -22,7 +22,7 @@ const { title }: PageProps = Astro.props.frontmatter || Astro.props;
 <BaseLayout title={title}>
   <HeaderNavigation client:load links={navigation} currentPath={currentPath} />
 
-  <Breadcrumbs />
+  <Breadcrumb client:load url={Astro.url.pathname} />
 
   <PageHero title={title} />
 

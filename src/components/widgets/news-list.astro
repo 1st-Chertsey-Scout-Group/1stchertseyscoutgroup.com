@@ -1,0 +1,14 @@
+---
+import type { CollectionEntry } from "astro:content";
+import NewsCard from "./news-card.astro";
+
+interface NewsListProps {
+  news: CollectionEntry<"news">[];
+}
+
+const { news } = Astro.props as NewsListProps;
+---
+
+<div class="flex flex-wrap">
+  {news.map((item) => <NewsCard item={item} />)}
+</div>

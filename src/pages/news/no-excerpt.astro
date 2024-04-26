@@ -1,0 +1,20 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import NewsLayout from "../../layouts/news.layout.astro";
+import NewsList from "@/components/widgets/news-list.astro";
+type Props = CollectionEntry<"news">;
+
+const newsCollection = await getCollection("news");
+const news = newsCollection
+  .filter((n) => n.data.excerpt == undefined)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+---
+
+<NewsLayout title="News">
+
+    <div>
+        {news.length}
+    </div>
+
+  <NewsList news={news} />
+</NewsLayout>

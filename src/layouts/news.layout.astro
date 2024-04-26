@@ -1,0 +1,38 @@
+---
+import BaseLayout from "@/layouts/base.layout.astro";
+
+import { HeaderNavigation } from "@/components/ui/header-navigation";
+
+import { navigation } from "../lib/navigation";
+import { Container } from "@/components/ui/container";
+import { Breadcrumb } from "../components/ui/breadcrumb";
+import Footer from "../components/widgets/footer.astro";
+import PageHero from "../components/widgets/page-hero.astro";
+import JoinUs from "../components/widgets/join-us.astro";
+
+const currentPath = "/aeasd";
+
+interface PageProps {
+  title: string;
+}
+
+const { title }: PageProps = Astro.props.frontmatter || Astro.props;
+---
+
+<BaseLayout title={title}>
+  <HeaderNavigation client:load links={navigation} currentPath={currentPath} />
+
+  <Breadcrumb url={Astro.url.pathname} />
+
+  <PageHero title={title} />
+
+  <main class="bg-background">
+    <Container className="py-4">
+      <slot />
+    </Container>
+  </main>
+
+  <JoinUs />
+
+  <Footer />
+</BaseLayout>
