@@ -1,18 +1,34 @@
 ---
-import { Container } from "@/components/ui/container";
-import BaseLayout from "./base.layout.astro";
+import BaseLayout from "@/layouts/base.layout.astro";
 
-interface ErrorProps {
+import { HeaderNavigation } from "@/components/ui/header-navigation";
+
+import { navigation } from "../lib/navigation";
+import { Container } from "@/components/ui/container";
+import { Breadcrumb } from "../components/ui/breadcrumb";
+import Footer from "../components/widgets/footer.astro";
+import PageHero from "../components/widgets/page-hero.astro";
+import JoinUs from "../components/widgets/join-us.astro";
+
+const currentPath = "/aeasd";
+
+interface PageProps {
   title: string;
 }
 
-const { title }: ErrorProps = Astro.props.frontmatter || Astro.props;
+const { title }: PageProps = Astro.props.frontmatter || Astro.props;
 ---
 
 <BaseLayout title={title}>
+  <HeaderNavigation client:load links={navigation} currentPath={currentPath} />
+
   <main class="bg-background">
-    <Container className="py-4">
+    <Container className="py-4 h-screen flex flex-col flex-grow justify-center">
       <slot />
     </Container>
   </main>
+
+  <JoinUs />
+
+  <Footer />
 </BaseLayout>
