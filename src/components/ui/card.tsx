@@ -17,7 +17,7 @@ class Card extends Component<CardProps, CardState> {
 
   render() {
     return (
-      <div className={cn(this.props.className, "p-2 flex flex-col h-full")}>
+      <div className={cn("p-2 flex flex-col", this.props.className)}>
         <div className="flex flex-col bg-card text-card-foreground h-full">
           {this.props.children}
         </div>
@@ -54,6 +54,7 @@ class CardImage extends Component<CardImageProps, CardImageState> {
 }
 
 type CardBodyProps = {
+  className?: string;
   children: React.ReactElement<CardCaption | CardHeader | CardFooter>[];
 };
 
@@ -67,7 +68,7 @@ class CardBody extends Component<CardBodyProps, CardBodyState> {
   }
 
   render() {
-    return <div className="p-4">{this.props.children}</div>;
+    return <div  className={cn(this.props.className, "p-4")}>{this.props.children}</div>;
   }
 }
 

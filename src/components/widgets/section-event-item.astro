@@ -1,0 +1,28 @@
+---
+import type { EventItem } from "@/code/osm.service";
+
+interface EventItemProps {
+  item: EventItem;
+}
+
+const { item } = Astro.props as EventItemProps;
+---
+
+<div class="py-1">
+  <div
+    class="pt-8 pb-5 overflow-hidden border-l-4 border-l-primary pl-4 hover:border-l-6"
+  >
+    <div>
+      {item.singleDay && <small>{item.formattedStartDate}</small>}
+      {
+        !item.singleDay && (
+          <small>
+            {item.formattedStartDate} - {item.formattedEndDate}
+          </small>
+        )
+      }
+    </div>
+    <h3 class="h4 text-primary capitalize">{item.title}</h3>
+    <div>{item.location}</div>
+  </div>
+</div>

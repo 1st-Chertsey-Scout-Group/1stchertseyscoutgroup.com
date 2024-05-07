@@ -1,0 +1,181 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import SectionsLayout from "../../layouts/sections.layout.astro";
+import {
+  Card,
+  CardBody,
+  CardCaption,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardImage,
+} from "@/components/ui/card";
+import { date } from "astro/zod";
+import { Image } from "astro:assets";
+import { sequence } from "astro:middleware";
+
+export async function getStaticPaths() {
+  const sectionsCollection = await getCollection("sections");
+  return sectionsCollection.map((section) => ({
+    params: { section: section.slug },
+    props: section,
+  }));
+}
+type Props = CollectionEntry<"sections">;
+
+const section = Astro.props;
+const {
+  data: {
+    programmeAndEvents,
+    meeting,
+    leaders,
+    title,
+    latestNews,
+    uniform,
+    badges,
+  },
+  slug,
+} = section;
+const { Content } = await section.render();
+---
+
+<SectionsLayout {...section.data}>
+  <div><slot /></div>
+
+  <div class="grid md:grid-cols-12 mt-12 mb-12 gap-1">
+    <div class="md:col-span-8 pb-5 md:pb-0">
+      {
+        programmeAndEvents && (
+          <Card className="h-full">
+            <CardImage href={"./" + slug + "/programme-and-events"}>
+              <Image
+                loading={"lazy"}
+                src={programmeAndEvents.image}
+                alt={programmeAndEvents.imageAlt}
+                quality={5}
+              />
+            </CardImage>
+            <CardBody>
+              <CardHeader href={"./" + slug + "/programme-and-events"}>
+                Programme and Events
+              </CardHeader>
+              <CardContent>{programmeAndEvents.caption}</CardContent>
+              <CardFooter href={"./" + slug + "/programme-and-events"}>
+                View programme & Events
+              </CardFooter>
+            </CardBody>
+          </Card>
+        )
+      }
+    </div>
+    <div class="md:col-span-4 lg:col-start-9">
+      {
+        meeting && (
+          <Card>
+            <CardBody className="bg-secondary text-secondary-foreground text-center">
+              <CardHeader>
+                <div class="h3">{meeting.day}</div>
+              </CardHeader>
+              <CardContent>
+                {meeting.start} til {meeting.end}
+              </CardContent>
+            </CardBody>
+          </Card>
+        )
+      }
+      {
+        leaders && leaders.length > 0 && (
+          <Card>
+            <CardBody>
+              <CardHeader>Meet the leaders</CardHeader>
+              <CardContent>
+                <div class="columns-2">
+                  {leaders.map((leader) => (
+                    <div class="break-inside-avoid pb-1">
+                      <div>{leader.name}</div>
+                      <small>{leader.role}</small>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </CardBody>
+          </Card>
+        )
+      }
+    </div>
+
+    <div class="md:col-span-12 lg:col-span-4 pb-5 md:pb-0">
+      {
+        latestNews && (
+          <Card className="h-full">
+            <CardImage href={"./" + slug + "/programme-and-events"}>
+              <Image
+                loading={"lazy"}
+                src={latestNews.image}
+                alt={latestNews.imageAlt}
+                quality={5}
+              />
+            </CardImage>
+            <CardBody>
+              <CardHeader href={"./" + slug + "/programme-and-events"}>
+                Latest {title} News
+              </CardHeader>
+              <CardContent>{latestNews.caption}</CardContent>
+              <CardFooter href={"./" + slug + "/programme-and-events"}>
+                Find out what we've been doing
+              </CardFooter>
+            </CardBody>
+          </Card>
+        )
+      }
+    </div>
+
+    <div class="md:col-span-6 lg:col-span-4 pb-5 md:pb-0">
+      {
+        uniform && (
+          <Card className="h-full">
+            <CardImage href={uniform.url}>
+              <Image
+                loading={"lazy"}
+                src={uniform.image}
+                alt={uniform.imageAlt}
+                quality={5}
+              />
+            </CardImage>
+            <CardBody>
+              <CardHeader href={uniform.url}>
+                Uniform and badge placement
+              </CardHeader>
+              <CardContent>{uniform.caption}</CardContent>
+              <CardFooter href={uniform.url}>
+                What to wear at {title}
+              </CardFooter>
+            </CardBody>
+          </Card>
+        )
+      }
+    </div>
+
+    <div class="md:col-span-6 lg:col-span-4 pb-5 md:pb-0">
+      {
+        badges && (
+          <Card className="h-full">
+            <CardImage href={badges.url}>
+              <Image
+                loading={"lazy"}
+                src={badges.image}
+                alt={badges.imageAlt}
+                quality={5}
+              />
+            </CardImage>
+            <CardBody>
+              <CardHeader href={badges.url}>Badges and Awards</CardHeader>
+              <CardContent>{badges.caption}</CardContent>
+              <CardFooter href={badges.url}>Explore badges</CardFooter>
+            </CardBody>
+          </Card>
+        )
+      }
+    </div>
+  </div>
+</SectionsLayout>
