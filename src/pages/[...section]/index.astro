@@ -108,7 +108,7 @@ const { Content } = await section.render();
       {
         latestNews && (
           <Card className="h-full">
-            <CardImage href={"./" + slug + "/programme-and-events"}>
+            <CardImage href={"./" + slug + "/latest-news"}>
               <Image
                 loading={"lazy"}
                 src={latestNews.image}
@@ -117,11 +117,11 @@ const { Content } = await section.render();
               />
             </CardImage>
             <CardBody>
-              <CardHeader href={"./" + slug + "/programme-and-events"}>
+              <CardHeader href={"./" + slug + "/latest-news"}>
                 Latest {title} News
               </CardHeader>
               <CardContent>{latestNews.caption}</CardContent>
-              <CardFooter href={"./" + slug + "/programme-and-events"}>
+              <CardFooter href={"./" + slug + "/latest-news"}>
                 Find out what we've been doing
               </CardFooter>
             </CardBody>

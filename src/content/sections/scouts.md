@@ -18,7 +18,7 @@ leaders:
 
 latestNews:
   caption: Find out whats on the programme this term
-  image: ../../media/cover-photo.jpg
+  image: ./media/scouts/canoeing.png
   imageAlt: 2 scouts ziplining
 
 uniform:
@@ -30,7 +30,7 @@ uniform:
 badges:
   url: https://www.scouts.org.uk/scouts/activity-badges/
   caption: Scouts start small but think big, always challenging themselves to do more and be more. It starts with an award. Who knows where it might lead?
-  image: ../../media/cover-photo.jpg
+  image: ./media/scouts/rafting.png
   imageAlt: 2 scouts ziplining
 
 
@@ -40,8 +40,9 @@ programmeAndEvents:
   caption: Find out whats on the programme this term
   image: ../../media/cover-photo.jpg
   imageAlt: 2 scouts ziplining
+  
 tags:
-  - scouts
+  - Scouts
 ---
 
 This is the scouts page

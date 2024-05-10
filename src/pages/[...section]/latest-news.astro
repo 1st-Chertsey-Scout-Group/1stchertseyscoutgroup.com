@@ -1,0 +1,33 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import NewsLayout from "../../layouts/news.layout.astro";
+import NewsList from "@/components/widgets/news-list.astro";
+
+export async function getStaticPaths() {
+  const sectionsCollection = await getCollection("sections");
+  return sectionsCollection.map((section) => ({
+    params: { section: section.slug },
+    props: section,
+  }));
+}
+type Props = CollectionEntry<"sections">;
+
+const section = Astro.props;
+const {
+  data: { title },
+} = section;
+const { Content } = await section.render();
+
+var sectionTags = section.data.tags ?? [];
+
+const newsCollection = await getCollection("news");
+const news = newsCollection
+    .filter((n) => n.data.tags?.some(t => sectionTags.indexOf(t) > -1))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 9);
+---
+
+<NewsLayout {...section.data}
+title={"Latest " + title + "  News"}>
+  <NewsList news={news} />
+</NewsLayout>

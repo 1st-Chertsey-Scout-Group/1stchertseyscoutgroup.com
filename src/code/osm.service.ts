@@ -1,7 +1,7 @@
-import moment from "moment";
+import moment from "moment-timezone";
 import ical from "node-ical";
 
-interface ICalItem {
+export interface ICalItem {
   type: string;
   params: any[];
   uid: string;
@@ -76,9 +76,9 @@ export class OSMService {
         title: item.summary,
         description: item.description,
         date: date,
-        formattedDate: moment(date).format("ddd, Do MMMM"),
-        startTime: moment(item.start).format("h:mm a"),
-        endTime: moment(item.end).format("h:mm a"),
+        formattedDate: moment(this.toTimezone(date)).format("ddd, Do MMMM"),
+        startTime: moment(this.toTimezone(item.start)).format("h:mm a"),
+        endTime: moment(this.toTimezone(item.end)).format("h:mm a"),
         allDayEvent: item["MICROSOFT-CDO-ALLDAYEVENT"] == "TRUE",
       };
 
@@ -91,8 +91,8 @@ export class OSMService {
 
     return events.map((item) => {
       var date = new Date(item.start);
-      var start = moment(item.start).format("ddd, Do MMMM");
-      var end = moment(item.end).format("ddd, Do MMMM");
+      var start = moment(this.toTimezone(item.start)).format("ddd, Do MMMM");
+      var end = moment(this.toTimezone(item.end)).format("ddd, Do MMMM");
 
       var programmeItem: EventItem = {
         type: "Event",
@@ -106,5 +106,9 @@ export class OSMService {
 
       return programmeItem;
     });
+  }
+
+  private toTimezone(date: Date | string) {
+    return moment(date).clone().utcOffset(0, true); // convert time to user's timezone
   }
 }
