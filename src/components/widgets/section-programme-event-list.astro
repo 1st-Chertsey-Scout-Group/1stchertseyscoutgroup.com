@@ -1,0 +1,31 @@
+---
+import { type ProgrammeItem, type EventItem } from "@/code/osm.service";
+import SectionProgrammeItem from "./section-programme-item.astro";
+import SectionEventItem from "./section-event-item.astro";
+
+interface ProgrammeListProps {
+  items: (ProgrammeItem | EventItem)[];
+  meetingDay: string;
+}
+
+const { items, meetingDay } = Astro.props as ProgrammeListProps;
+---
+
+<div class="flex flex-col divide-y">
+  {
+    items &&
+      items.map((item) => {
+        switch (item.type) {
+          case "Programme":
+            return <SectionProgrammeItem item={item} meetingDay={meetingDay} />;
+          case "Event":
+            return <SectionEventItem item={item} />;
+        }
+      })
+  }
+  {
+    (!items || items.length == 0) && (
+      <div class="pt-8 pb-5 overflow-hidden">No programme</div>
+    )
+  }
+</div>

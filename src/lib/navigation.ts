@@ -9,37 +9,37 @@ export const navigation: Array<MenuLink | ActionLink> = [
       {
         type: "link",
         text: "Squirrels",
-        href: "/sections/squirrels",
+        href: "/squirrels",
       },
       {
         type: "link",
         text: "Abbey Beavers",
-        href: "/sections/abbey-beavers",
+        href: "/abbey-beavers",
       },
       {
         type: "link",
         text: "Bourne Beavers",
-        href: "/sections/bourne-beavers",
+        href: "/bourne-beavers",
       },
       {
         type: "link",
         text: "Dons Cubs",
-        href: "/sections/dons-cubs",
+        href: "/dons-cubs",
       },
       {
         type: "link",
         text: "Hunters Cubs",
-        href: "/sections/hunters-cubs",
+        href: "/hunters-cubs",
       },
       {
         type: "link",
         text: "Scouts",
-        href: "/sections/scouts",
+        href: "/scouts",
       },
       {
         type: "link",
-        text: "Explorers",
-        href: "/sections/explorers",
+        text: "Intrepid Explorers",
+        href: "/intrepid-explorers",
       },
     ],
   },
@@ -53,11 +53,11 @@ export const navigation: Array<MenuLink | ActionLink> = [
         text: "Our Group",
         href: "/our-group",
       },
-      {
+      /*{
         type: "link",
         text: "Our History",
         href: "/our-history",
-      },
+      },*/
     ],
   },
   {

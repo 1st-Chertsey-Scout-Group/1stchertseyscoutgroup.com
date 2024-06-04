@@ -6,6 +6,6 @@ interface HeroProps {
 const { title } = Astro.props as HeroProps;
 ---
 
-<div class="bg-primary p-8 text-center text-5xl text-primary-foreground">
-  {title}
+<div class="bg-primary p-8 text-center text-primary-foreground">
+  <h1 class="pb-0">{title}</h1>  
 </div>

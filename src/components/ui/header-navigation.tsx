@@ -243,7 +243,7 @@ class DropdownLink extends React.Component<
         <ul
           id={this.id}
           className={cn(
-            "px-4 py-2 md:absolute bg-background min-w-40 md:border-2 border-t-0 border-l-0",
+            "px-4 py-2 md:absolute bg-background min-w-40 md:border-2 border-t-0 border-l-0 z-50",
             {
               block: this.state.show,
               hidden: !this.state.show,
