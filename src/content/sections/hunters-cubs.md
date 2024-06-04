@@ -4,6 +4,13 @@ meeting:
   day: Monday
   start: " 19:00"
   end: " 20:30"
+leaders:
+  - role: Cub Leader
+    name: Mike
+  - role: Cub Leader
+    name: Steve
+  - role: Cub Leader
+    name: Ben
 
 latestNews:
   caption: Find out whats on the programme this term

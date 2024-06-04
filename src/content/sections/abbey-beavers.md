@@ -4,6 +4,11 @@ meeting:
   day: Monday
   start: " 17:45"
   end: " 18:45"
+leaders:
+  - role: Beaver Leader
+    name: Alex
+  - role: Beaver Leader
+    name: Shaun
 
 latestNews:
   caption: Find out whats on the programme this term
