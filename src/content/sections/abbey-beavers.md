@@ -4,6 +4,11 @@ meeting:
   day: Monday
   start: " 17:45"
   end: " 18:45"
+leaders:
+  - role: Beaver Leader
+    name: Alex
+  - role: Beaver Leader
+    name: Shaun
 
 latestNews:
   caption: Find out whats on the programme this term
@@ -24,8 +29,8 @@ badges:
 
 
 programmeAndEvents:
-  programmeFeed: https://www.onlinescoutmanager.co.uk/ext/cal/?f=335006.NWFjMzE2MjE2ZDZmYzI4ZDE2YzhmZjAyNmNlODczZTc2NWZkYmVmNGQ0OWY3MjFjMDFkNGU2OTU4MjA2YzUxOTUxMzZlMTFhZWNlMDZmMzRiMGU4OTMyYTFiMTQ0OWVmMWJjZmJiMzRjMzRkNjZlMGY4Yjk5Yjk0NTA4MzhhODY%3D.M7bzioNDCX
-  eventsFeed: https://www.onlinescoutmanager.co.uk/ext/cal/?f=344121.NWRiN2QyNDE3MTFhMjIxNjMzNWY0NzBkNDE2MzBjMGQyYTA0MzZjZGQ4ZTAyODI0NzcwOTQ1ZTQ3MTE1MjAwMmI3ZmY4M2NkZDBmYTViMjhmMTljMDE3NWRmNjM5YWM4MzU0ZDgyNmYxMjU4ODJlODFjODkyYjdkYTg2ZWMwM2M%3D.WxOKA1rjuy
+  programmeFeed: https://www.onlinescoutmanager.co.uk/ext/cal/?f=346099.ODk3MmE0MWYwNDI3ZWVlZDQ2MWI0MDg2MTNmNDU3ODgzZDYyYmExN2E4MTNhN2E4NGE5NmE5NWViZDAzNzZhYmYwMjY2ZjM5ZmYwOGJiMWJkYzdjNTExMjFkYzc3ODc4NzNmYzNiMTJhZDg0ZTQ1N2ZiNTU1M2VkNThmYWQ0M2Q%3D.4IVEUcGWY9
+  eventsFeed: https://www.onlinescoutmanager.co.uk/ext/cal/?f=346100.M2Y5ZTM0MzI0NjU0YTU3YjRjZTAyZTE3MmRmOWZiNzMyZTc1Y2E4MzVhZWVlM2M0YWZiMDNlOTgxNDEyOTg1NTgzN2VmNzRmMGQ1OTI4M2M4MDcxNmQwOGRhYzQ3MWZhYzJhZmMwN2U2ZTczOTk3M2ZlYzRkY2MwMjQzYzllNDk%3D.TTn2VYoiIs
   caption: Find out whats on the programme this term
   image: ../../media/cover-photo.jpg
   imageAlt: 2 scouts ziplining

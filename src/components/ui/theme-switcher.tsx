@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { Moon, Sun } from "lucide-react";
 import { Component } from "react";
 
@@ -21,7 +22,9 @@ export const themeStorage = {
   },
 };
 
-type ThemeSwitcherProps = {};
+type ThemeSwitcherProps = {
+  isTransparent: boolean;
+};
 
 type Theme = "light" | "dark";
 
@@ -60,7 +63,7 @@ class ThemeSwitcher extends Component<ThemeSwitcherProps, ThemeSwitcherState> {
 
   render() {
     return (
-      <button aria-label="Theme switcher" className="text-foreground" onClick={this.handleThemeToggle}>
+      <button aria-label="Theme switcher" className={cn(this.props.isTransparent ? "text-white" : "text-foreground")} onClick={this.handleThemeToggle}>
         {this.state.theme == "light" ? <Moon /> : <Sun />}
       </button>
     );

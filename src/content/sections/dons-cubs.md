@@ -4,6 +4,13 @@ meeting:
   day: Wednesday
   start: " 19:00"
   end: " 20:30"
+leaders:
+  - role: Cub Leader
+    name: Richard
+  - role: Cub Leader
+    name: Emma
+  - role: Cub Leader
+    name: Steve
 
 latestNews:
   caption: Find out whats on the programme this term
@@ -24,8 +31,8 @@ badges:
 
 
 programmeAndEvents:
-  programmeFeed: https://www.onlinescoutmanager.co.uk/ext/cal/?f=335006.NWFjMzE2MjE2ZDZmYzI4ZDE2YzhmZjAyNmNlODczZTc2NWZkYmVmNGQ0OWY3MjFjMDFkNGU2OTU4MjA2YzUxOTUxMzZlMTFhZWNlMDZmMzRiMGU4OTMyYTFiMTQ0OWVmMWJjZmJiMzRjMzRkNjZlMGY4Yjk5Yjk0NTA4MzhhODY%3D.M7bzioNDCX
-  eventsFeed: https://www.onlinescoutmanager.co.uk/ext/cal/?f=344121.NWRiN2QyNDE3MTFhMjIxNjMzNWY0NzBkNDE2MzBjMGQyYTA0MzZjZGQ4ZTAyODI0NzcwOTQ1ZTQ3MTE1MjAwMmI3ZmY4M2NkZDBmYTViMjhmMTljMDE3NWRmNjM5YWM4MzU0ZDgyNmYxMjU4ODJlODFjODkyYjdkYTg2ZWMwM2M%3D.WxOKA1rjuy
+  programmeFeed: https://www.onlinescoutmanager.co.uk/ext/cal/?f=346103.ZjAyOTllMmYzZDQ0N2JjYmM5YjM5ZDc1YjRiYTk0ZDUzNzAyNGE3MTNjODZjNjFlZWY0ZDI1OTNlZjhlNTZmM2RmMTg4NDk5NGI3MGU2YTRlZmYwNjZiMjk3OWYxMTc1ZjA4ZTIxMWI4Y2IyNzAxZGM0ZDU0MGZiZDFlYWY4NWI%3D.eUxB22d1y4
+  eventsFeed: https://www.onlinescoutmanager.co.uk/ext/cal/?f=346104.OTQzNDA3YThlZmE5OTY5MGI0NjRhODA5YmZjMjY5OTY3NGM0YTVmYjQ0NDQyYmQ0ZDg4NmMzYTZmMWFhZTE2ZmQ5ZTJiMTQxZTY3OTNhMGUwZDNkNThmYWIwMTdmZTNhYTJmNDQxMTg1Yzg4ZmEyZDQxMDkxMTg4Yjc0MzRiOTc%3D.yB3P0NqUfz
   caption: Find out whats on the programme this term
   image: ../../media/cover-photo.jpg
   imageAlt: 2 scouts ziplining

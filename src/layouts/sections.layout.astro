@@ -28,7 +28,7 @@ const { title }: PageProps =
 ---
 
 <BaseLayout title={title}>
-  <HeaderNavigation client:load links={navigation} currentPath={currentPath} />
+  <HeaderNavigation client:load links={navigation} currentPath={currentPath} isTransparent={false} />
 
   <Breadcrumb url={Astro.url.pathname} />
 
