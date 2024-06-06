@@ -4,15 +4,12 @@ import SectionsLayout from "../../layouts/sections.layout.astro";
 import {
   Card,
   CardBody,
-  CardCaption,
   CardContent,
   CardFooter,
   CardHeader,
   CardImage,
 } from "@/components/ui/card";
-import { date } from "astro/zod";
 import { Image } from "astro:assets";
-import { sequence } from "astro:middleware";
 
 export async function getStaticPaths() {
   const sectionsCollection = await getCollection("sections");
@@ -36,7 +33,6 @@ const {
   },
   slug,
 } = section;
-const { Content } = await section.render();
 ---
 
 <SectionsLayout {...section.data}>
