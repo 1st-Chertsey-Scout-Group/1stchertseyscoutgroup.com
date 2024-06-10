@@ -12,33 +12,59 @@ const { item, meetingDay } = Astro.props as ProgrammeItemProps;
 const onMeetingDay = meetingDay == moment(item.date).format("dddd");
 ---
 
-<div class="py-1">
-  <div
-    class:list={[
-      "pt-8 pb-5 overflow-hidden border-l-4 pl-4",
-      onMeetingDay ? "border-l-background" : "border-l-secondary",
-    ]}
-  >
-    <div>{item.formattedDate}</div>
-    <h3
+<programme-item data-date={item.date}>
+  <div class="py-1">
+    <div
       class:list={[
-        "h4 capitalize",
-        item.title.toLowerCase() == "no meeting"
-          ? "text-primary"
-          : "text-primary",
+        "pt-8 pb-5 overflow-hidden border-l-4 pl-4",
+        onMeetingDay ? "border-l-background" : "border-l-secondary",
       ]}
     >
-      {item.title}
-    </h3>
-    <div class="pb-2">
-      {
-        !item.allDayEvent && (
-          <small>
-            {item.startTime} - {item.endTime}
-          </small>
-        )
-      }
+      <div>{item.formattedDate}</div>
+      <h3
+        class:list={[
+          "h4 capitalize",
+          item.title.toLowerCase() == "no meeting"
+            ? "text-primary"
+            : "text-primary",
+        ]}
+      >
+        {item.title}
+      </h3>
+      <div class="pb-2">
+        {
+          !item.allDayEvent && (
+            <small>
+              {item.startTime} - {item.endTime}
+            </small>
+          )
+        }
+      </div>
+      <div>{item.description}</div>
     </div>
-    <div>{item.description}</div>
   </div>
-</div>
+</programme-item>
+
+<script>
+  class ProgrammeItem extends HTMLElement {
+    constructor() {
+      super();
+
+      const date = this.dataset.date;
+
+      if(!date){
+        this.style.display = "none";
+        return;
+      }
+
+      if(new Date(date).getTime() < new Date().getTime()){
+        this.style.display = "none";
+      } else {
+        this.style.display = "block";
+      }
+    }
+  }
+
+  // Tell the browser to use our AstroHeart class for <astro-heart> elements.
+  customElements.define("programme-item", ProgrammeItem);
+</script>
