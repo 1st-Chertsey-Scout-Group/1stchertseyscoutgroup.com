@@ -32,7 +32,7 @@ programmeAndEvents:
   programmeFeed: https://www.onlinescoutmanager.co.uk/ext/cal/?f=346099.ODk3MmE0MWYwNDI3ZWVlZDQ2MWI0MDg2MTNmNDU3ODgzZDYyYmExN2E4MTNhN2E4NGE5NmE5NWViZDAzNzZhYmYwMjY2ZjM5ZmYwOGJiMWJkYzdjNTExMjFkYzc3ODc4NzNmYzNiMTJhZDg0ZTQ1N2ZiNTU1M2VkNThmYWQ0M2Q%3D.4IVEUcGWY9
   eventsFeed: https://www.onlinescoutmanager.co.uk/ext/cal/?f=346100.M2Y5ZTM0MzI0NjU0YTU3YjRjZTAyZTE3MmRmOWZiNzMyZTc1Y2E4MzVhZWVlM2M0YWZiMDNlOTgxNDEyOTg1NTgzN2VmNzRmMGQ1OTI4M2M4MDcxNmQwOGRhYzQ3MWZhYzJhZmMwN2U2ZTczOTk3M2ZlYzRkY2MwMjQzYzllNDk%3D.TTn2VYoiIs
   caption: Find out whats on the programme this term
-  image: ../../media/cover-photo.jpg
+  image: ../../media/cover-photo-landscape.jpg
   imageAlt: 2 scouts ziplining
 
 tags:

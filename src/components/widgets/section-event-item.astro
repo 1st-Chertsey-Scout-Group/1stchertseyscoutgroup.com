@@ -8,21 +8,47 @@ interface EventItemProps {
 const { item } = Astro.props as EventItemProps;
 ---
 
-<div class="py-1">
-  <div
-    class="pt-8 pb-5 overflow-hidden border-l-4 border-l-primary pl-4 hover:border-l-6"
-  >
-    <div>
-      {item.singleDay && <small>{item.formattedStartDate}</small>}
-      {
-        !item.singleDay && (
-          <small>
-            {item.formattedStartDate} - {item.formattedEndDate}
-          </small>
-        )
-      }
+<programme-event data-date={item.date}>
+  <div class="py-1">
+    <div
+      class="pt-8 pb-5 overflow-hidden border-l-4 border-l-primary pl-4 hover:border-l-6"
+    >
+      <div>
+        {item.singleDay && <small>{item.formattedStartDate}</small>}
+        {
+          !item.singleDay && (
+            <small>
+              {item.formattedStartDate} - {item.formattedEndDate}
+            </small>
+          )
+        }
+      </div>
+      <h3 class="h4 text-primary capitalize">{item.title}</h3>
+      <div>{item.location}</div>
     </div>
-    <h3 class="h4 text-primary capitalize">{item.title}</h3>
-    <div>{item.location}</div>
   </div>
-</div>
+</programme-event>
+
+<script>
+  class ProgrammeEvent extends HTMLElement {
+    constructor() {
+      super();
+
+      const date = this.dataset.date;
+
+      if(!date){
+        this.style.display = "none";
+        return;
+      }
+
+      if(new Date(date).getTime() < new Date().getTime()){
+        this.style.display = "none";
+      } else {
+        this.style.display = "block";
+      }
+    }
+  }
+
+  // Tell the browser to use our AstroHeart class for <astro-heart> elements.
+  customElements.define("programme-event", ProgrammeEvent);
+</script>

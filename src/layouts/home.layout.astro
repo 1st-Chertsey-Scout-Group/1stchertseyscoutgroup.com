@@ -8,7 +8,8 @@ import Footer from "../components/widgets/footer.astro";
 import JoinUs from "../components/widgets/join-us.astro";
 
 import { Image } from "astro:assets";
-import CoverImage from "@/media/cover-photo.jpg";
+import CoverImageLandscape from "@/media/cover-photo-landscape.jpg";
+import CoverImagePortrait from "@/media/cover-photo-portrait.jpeg";
 import GroupBadge from "@/media/group-badge.png";
 
 const currentPath = "/aeasd";
@@ -26,18 +27,24 @@ const { title }: PageProps = Astro.props.frontmatter || Astro.props;
   <div class="relative bg-gradient-to-r from-gradient-start to-gradient-end mt-[-72px]">
     <div class="absolute inset-0">
       <Image
-        src={CoverImage}
+        src={CoverImageLandscape}
         alt="A photo of 2 scouts ziplining"
         quality={5}
-        class="h-full w-full object-cover object-left opacity-60"
+        class="landscape:block portrait:hidden  h-full w-full object-cover object-center opacity-60"
       />
+      <Image
+      src={CoverImagePortrait}
+      alt="The glow of a campfire"
+      quality={5}
+      class="portrait:block landscape:hidden  h-full w-full object-cover object-center opacity-60"
+    />
     </div>
     <div
       class="relative z-10 mx-auto flex h-screen max-w-screen-xl flex-col justify-center px-8 text-center text-white"
     >
       <Image
         src={GroupBadge}
-        class="mx-auto w-72 p-3"
+        class="mx-auto w-52 md:w-72 p-3"
         width={GroupBadge.width}
         quality={5}
         alt="The 1st Chertsey Scout Group badge"
