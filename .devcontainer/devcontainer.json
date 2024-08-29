@@ -26,7 +26,11 @@
 				"astro-build.astro-vscode"
 			]
 		}
-	}
+	},
+	"runArgs": [
+		// Use the network stack of the host machine
+		"--net=host"
+	]
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }
