@@ -8,3 +8,10 @@
 from = "/*"
 to = "/page-not-found"
 status = 404
+
+
+[[redirects]]
+from = "/fireworks"
+to = "/news/2024/november/fireworks"
+status = 200
+force = true
