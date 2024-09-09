@@ -1,0 +1,81 @@
+---
+import PageLayout from "@/layouts/page.layout.astro";
+---
+
+<PageLayout title="Get In Touch">
+  <div class="grid lg:grid-cols-2 gap-4">
+    <div>
+      <form action="#" class="space-y-8">
+        <div>
+          <label for="email" class="block mb-2 text-bold">Your email</label>
+          <input
+            type="email"
+            id="email"
+            class="block w-full p-2.5 border"
+            placeholder="name@1stchertseyscoutgroup.com"
+            required
+            disabled
+          />
+        </div>
+        <div>
+          <label for="section" class="block mb-2">Section</label>
+          <select
+            disabled
+            id="section"
+            name="section"
+            class="block w-full p-2.5 border"
+          >
+            <option value="">--- Please Select ---</option>
+            <option value="beavers">Beavers</option>
+            <option value="cubs">Cubs</option>
+            <option value="scouts">Scouts</option>
+          </select>
+        </div>
+        <div>
+          <label for="subject" class="block mb-2">Subject</label>
+          <input
+            type="text"
+            id="subject"
+            class="block w-full p-2.5 border"
+            placeholder="Let us know how we can help you"
+            required
+            disabled
+          />
+        </div>
+        <div class="sm:col-span-2">
+          <label for="message" class="block mb-2">Your message</label>
+          <textarea
+            required
+            disabled
+            id="message"
+            rows="6"
+            class="block p-2.5 w-full border"
+            placeholder="Leave a comment..."></textarea>
+        </div>
+        <button
+          disabled
+          type="submit"
+          class="py-3 px-5 bg-primary text-primary-foreground hover:bg-primary/90"
+          >Send message</button
+        >
+      </form>
+    </div>
+    <div>
+      The 1st Chertsey Scout HQ is located in Chertsey, close to local parks and
+      woods. Our newly-completed base has easy access for all, and plenty of
+      parking space outside.
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4309.540643369194!2d-0.5045704219587034!3d51.39350835983362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48767792a09dbd7b%3A0x6fd3b0bba98c6c55!2s1st%20Chertsey%20Scout%20Group!5e0!3m2!1sen!2suk!4v1681488046033!5m2!1sen!2suk"
+        width="800"
+        height="600"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+      Postal address: 1st Chertsey Scout Group Scout HQ Staines Lane Chertsey
+      Surrey KT16 8PS
+    </div>
+  </div>
+</PageLayout>

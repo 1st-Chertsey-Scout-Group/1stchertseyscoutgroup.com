@@ -1,7 +1,8 @@
 ---
-import { type ProgrammeItem, type EventItem } from "@/code/osm.service";
 import SectionProgrammeItem from "./section-programme-item.astro";
 import SectionEventItem from "./section-event-item.astro";
+import type { ProgrammeItem } from "@/code/interfaces/programme-item.interface";
+import type { EventItem } from "@/code/interfaces/event-item.interface";
 
 interface ProgrammeListProps {
   items: (ProgrammeItem | EventItem)[];
