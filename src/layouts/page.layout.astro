@@ -20,7 +20,12 @@ const { title }: PageProps = Astro.props.frontmatter || Astro.props;
 ---
 
 <BaseLayout title={title}>
-  <HeaderNavigation client:load links={navigation} currentPath={currentPath} isTransparent={false} />
+  <HeaderNavigation
+    client:load
+    links={navigation}
+    currentPath={currentPath}
+    isTransparent={false}
+  />
 
   <Breadcrumb client:load url={Astro.url.pathname} />
 

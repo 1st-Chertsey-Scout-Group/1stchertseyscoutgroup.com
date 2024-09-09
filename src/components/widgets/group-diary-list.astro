@@ -1,0 +1,27 @@
+---
+import type { DiaryItem } from "@/code/interfaces/diary-item.interface";
+import GroupDiaryItem from "./group-diary-item.astro";
+
+interface DiaryListProps {
+  items: DiaryItem[];
+}
+
+const { items } = Astro.props as DiaryListProps;
+---
+
+<div class="flex flex-col divide-y">
+  {
+    items &&
+      items.map((item) => {
+        switch (item.type) {
+          case "Diary":
+            return <GroupDiaryItem item={item} />;
+        }
+      })
+  }
+  {
+    (!items || items.length == 0) && (
+      <div class="pt-8 pb-5 overflow-hidden">No events</div>
+    )
+  }
+</div>

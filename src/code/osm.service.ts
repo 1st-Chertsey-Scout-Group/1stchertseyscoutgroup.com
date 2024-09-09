@@ -1,45 +1,8 @@
 import moment from "moment-timezone";
 import ical from "node-ical";
-
-export interface ICalItem {
-  type: string;
-  params: any[];
-  uid: string;
-  start: string;
-  datetype: string;
-  sequence: string;
-  transparency: string;
-  end: string;
-  summary: string;
-  class: string;
-  dtstamp: string;
-  "MICROSOFT-CDO-ALLDAYEVENT"?: string;
-  description?: string;
-  location?: string;
-}
-
-interface Item {
-  title: string;
-  type: "Programme" | "Event";
-  date: Date;
-}
-
-export interface ProgrammeItem extends Item {
-  type: "Programme";
-  description?: string;
-  formattedDate: string;
-  startTime?: string;
-  endTime?: string;
-  allDayEvent?: boolean;
-}
-
-export interface EventItem extends Item {
-  type: "Event";
-  location?: string;
-  formattedStartDate: string;
-  formattedEndDate: string;
-  singleDay: boolean;
-}
+import type { ICalItem } from "./interfaces/ical-item.interface";
+import type { ProgrammeItem } from "./interfaces/programme-item.interface";
+import type { EventItem } from "./interfaces/event-item.interface";
 
 export class OSMService {
   private async getCalenderItems(url: string) {

@@ -1,0 +1,15 @@
+---
+import { GoogleCalendarService } from "@/code/google-calendar.service";
+import GroupDiaryList from "@/components/widgets/group-diary-list.astro";
+import PageLayout from "@/layouts/page.layout.astro";
+
+const gc = new GoogleCalendarService();
+
+var items = await gc.GetDiaryItems(
+    "https://calendar.google.com/calendar/ical/c2fcacf573f5dfaa4f92127279381e6bdf7aa6b5a2263ddd28149fb7b3673ecf%40group.calendar.google.com/private-a612f2dfb5318f25b00eba77dbb1418c/basic.ics",
+);
+---
+
+<PageLayout title="Group Diary">
+    <GroupDiaryList items={items} />
+</PageLayout>

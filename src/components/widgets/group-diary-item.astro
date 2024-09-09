@@ -1,0 +1,68 @@
+---
+import type { DiaryItem } from "@/code/interfaces/diary-item.interface";
+import moment from "moment";
+
+interface DiaryItemProps {
+  item: DiaryItem;
+}
+
+const { item } = Astro.props as DiaryItemProps;
+---
+
+<diary-item data-date={item.date}>
+  <div class="py-1">
+    <div
+      class:list={[
+        "pt-8 pb-5 overflow-hidden border-l-4 pl-4 border-l-background",
+      ]}
+    >
+      <div>{item.formattedDate}</div>
+      <h3
+        class:list={[
+          "h4 capitalize",
+          item.title.toLowerCase() == "no meeting"
+            ? "text-primary"
+            : "text-primary",
+        ]}
+      >
+        {item.title}
+      </h3>
+      <div class="pb-2">
+        {
+          !item.allDayEvent && (
+            <small>
+              {item.startTime} - {item.endTime}
+            </small>
+          )
+        }
+      </div>
+      <div>
+        <Fragment set:html={item.description} />
+      </div>
+    </div>
+  </div>
+</diary-item>
+
+<script>
+  class DiaryItem extends HTMLElement {
+    constructor() {
+      super();
+
+      const date = this.dataset.date;
+
+      if (!date) {
+        this.style.display = "none";
+        return;
+      }
+
+      if (new Date(date).getTime() < new Date().getTime()) {
+        this.style.display = "none";
+      } else {
+        this.style.display = "block";
+      }
+    }
+  }
+
+  // Tell the browser to use our AstroHeart class for <astro-heart> elements.
+  customElements.define("diary-item", DiaryItem);
+</script>

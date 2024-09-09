@@ -2,11 +2,9 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import SectionsLayout from "../../layouts/sections.layout.astro";
 import SectionProgrammeEventList from "@/components/widgets/section-programme-event-list.astro";
-import {
-  OSMService,
-  type EventItem,
-  type ProgrammeItem,
-} from "@/code/osm.service";
+import { OSMService } from "@/code/osm.service";
+import type { ProgrammeItem } from "@/code/interfaces/programme-item.interface";
+import type { EventItem } from "@/code/interfaces/event-item.interface";
 
 export async function getStaticPaths() {
   const sectionsCollection = await getCollection("sections");
@@ -25,7 +23,7 @@ let items: (ProgrammeItem | EventItem)[] = [];
 
 if (programmeAndEvents?.programmeFeed) {
   items.push(
-    ...(await osm.GetProgrammeItems(programmeAndEvents?.programmeFeed))
+    ...(await osm.GetProgrammeItems(programmeAndEvents?.programmeFeed)),
   );
 }
 

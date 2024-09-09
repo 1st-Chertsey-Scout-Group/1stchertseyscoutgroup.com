@@ -53,6 +53,11 @@ export const navigation: Array<MenuLink | ActionLink> = [
         text: "Our Group",
         href: "/our-group",
       },
+      {
+        type: "link",
+        text: "Diary",
+        href: "/diary",
+      },
       /*{
         type: "link",
         text: "Our History",
