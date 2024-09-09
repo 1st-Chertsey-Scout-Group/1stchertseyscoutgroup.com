@@ -1,5 +1,5 @@
 ---
-import type { EventItem } from "@/code/osm.service";
+import type { EventItem } from "@/code/interfaces/event-item.interface";
 
 interface EventItemProps {
   item: EventItem;
@@ -36,12 +36,12 @@ const { item } = Astro.props as EventItemProps;
 
       const date = this.dataset.date;
 
-      if(!date){
+      if (!date) {
         this.style.display = "none";
         return;
       }
 
-      if(new Date(date).getTime() < new Date().getTime()){
+      if (new Date(date).getTime() < new Date().getTime()) {
         this.style.display = "none";
       } else {
         this.style.display = "block";
