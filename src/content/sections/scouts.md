@@ -4,6 +4,7 @@ meeting:
   day: Thursday
   start: " 19:15"
   end: " 21:00"
+  
 leaders:
   - role: Scout Leader
     name: Tim

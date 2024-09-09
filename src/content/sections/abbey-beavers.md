@@ -4,11 +4,20 @@ meeting:
   day: Monday
   start: " 17:45"
   end: " 18:45"
+
 leaders:
   - role: Beaver Leader
-    name: Alex
+    name: Kathy
   - role: Beaver Leader
-    name: Shaun
+    name: Sally
+  - role: Beaver Leader
+    name: Katy
+  - role: Beaver Leader
+    name: Lisa
+  - role: Beaver Leader
+    name: Rosy
+  - role: Beaver Leader
+    name: Laura
 
 latestNews:
   caption: Find out whats on the programme this term

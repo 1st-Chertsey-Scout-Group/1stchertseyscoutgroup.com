@@ -5,6 +5,18 @@ meeting:
   start: " 17:00"
   end: " 18:00"
 
+leaders:
+  - role: Squirrel Leader
+    name: Kathy
+  - role: Squirrel Leader
+    name: Tracy
+  - role: Squirrel Leader
+    name: Katy
+  - role: Squirrel Leader
+    name: Sara
+  - role: Squirrel Leader
+    name: Laura
+
 latestNews:
   caption: Find out whats on the programme this term
   image: ./media/scouts/canoeing.png

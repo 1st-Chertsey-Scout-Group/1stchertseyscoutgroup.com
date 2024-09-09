@@ -5,6 +5,14 @@ meeting:
   start: " 18:00"
   end: " 19:00"
 
+leaders:
+  - role: Beaver Leader
+    name: Alex
+  - role: Beaver Leader
+    name: Shaun
+  - role: Beaver Leader
+    name: Dan
+
 latestNews:
   caption: Find out whats on the programme this term
   image: ./media/scouts/canoeing.png
