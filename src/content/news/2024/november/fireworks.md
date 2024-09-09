@@ -2,7 +2,7 @@
 title: Fireworks - 9th November 2024
 date: 2024-11-09T00:00:00.000Z
 author: Tim Cane
-thumbnail: ./media/Fireworks Flyer 2024 - Final - Web.jpg
+thumbnail: ./media/Fireworks-Flyer-2024.jpg
 excerpt: November 9th at Chertsey Cricket Club. Gates open 5:30 pm, fireworks at 7:45 pm.
 tags:
   - Fundraiser
@@ -26,4 +26,4 @@ Please arrive early to avoid disappointment.
 
 Note: For safety reasons, use of sparklers will NOT be permitted on site. Please DO NOT bring them.
 
-![fireworks flyer](./media/Fireworks Flyer 2024 - Final - Web.jpg)
+![fireworks flyer](./media/Fireworks-Flyer-2024.jpg)
