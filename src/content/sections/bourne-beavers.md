@@ -6,11 +6,11 @@ meeting:
   end: " 19:00"
 
 leaders:
-  - role: Beaver Leader
+  - role: Team Leader
     name: Alex
-  - role: Beaver Leader
+  - role: Team Leader
     name: Shaun
-  - role: Beaver Leader
+  - role: Team Leader
     name: Dan
 
 latestNews:

@@ -6,15 +6,15 @@ meeting:
   end: " 18:00"
 
 leaders:
-  - role: Squirrel Leader
+  - role: Team Leader
     name: Kathy
-  - role: Squirrel Leader
+  - role: Team Leader
     name: Tracy
-  - role: Squirrel Leader
+  - role: Team Leader
     name: Katy
-  - role: Squirrel Leader
+  - role: Team Leader
     name: Sara
-  - role: Squirrel Leader
+  - role: Team Leader
     name: Laura
 
 latestNews:
