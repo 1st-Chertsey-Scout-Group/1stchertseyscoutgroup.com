@@ -1,0 +1,13 @@
+{
+    "name": "Leather Woggle",
+    "thumbnail": "./media/leather-woggle.jpg",
+    "price": 3.00,
+    "colour": "Black",
+    "required": "Yes",
+    "type": "Woggle",
+    "sections": [
+        "Scout",
+        "Explorer",
+        "Leader"
+    ]
+}

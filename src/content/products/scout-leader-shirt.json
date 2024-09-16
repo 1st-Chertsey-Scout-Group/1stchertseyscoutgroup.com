@@ -1,0 +1,11 @@
+{
+    "name": "Leader Shirt",
+    "thumbnail": "./media/leader-shirt.jpg",
+    "price": 25.00,
+    "colour": "Cream",
+    "required": "Yes",
+    "type": "Shirt",
+    "sections": [
+        "Leader"
+    ]
+}

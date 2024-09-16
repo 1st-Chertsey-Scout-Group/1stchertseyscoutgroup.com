@@ -1,5 +1,6 @@
 ---
 title: Squirrels
+section: squirrel
 meeting:
   day: Wednesday
   start: " 17:00"

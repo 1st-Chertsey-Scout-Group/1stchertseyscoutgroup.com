@@ -1,5 +1,6 @@
 ---
 title: Bourne Beavers
+section: beaver
 meeting:
   day: Thursday
   start: " 18:00"

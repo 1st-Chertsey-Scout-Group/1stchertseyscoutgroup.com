@@ -53,7 +53,7 @@ class HeaderNavigation extends React.Component<
             <button
               id="toggle"
               type="button"
-              className={cn(this.props.isTransparent && this.state.showMenu ? "text-foreground" : "", "inline-flex h-10 w-10 items-center justify-center p-2 text-sm md:hidden")}
+              className={cn(this.props.isTransparent && this.state.showMenu ? "text-foreground" : "", "inline-flex h-10 w-10 items-center justify-center p-2 text-sm lg:hidden")}
               aria-controls="collapseMenu"
               aria-expanded={this.state.showMenu ? "true" : "false"}
               onClick={this.handleMenuToggle}
@@ -66,14 +66,14 @@ class HeaderNavigation extends React.Component<
               id="collapseMenu"
               aria-label="Main navigation"
               className={cn(
-                `md:items-center justify-between font-medium w-full flex md:flex md:w-auto md:order-1 flex-col-reverse md:flex-row`,
+                `lg:items-center justify-between font-medium w-full flex lg:flex lg:w-auto lg:order-1 flex-col-reverse lg:flex-row`,
                 {
                   block: this.state.showMenu,
                   hidden: !this.state.showMenu,
                 }
               )}
             >
-              <ul className="flex flex-col p-0 px-4 md:flex-row md:items-center md:space-x-8 rtl:space-x-reverse">
+              <ul className="flex flex-col p-0 px-4 lg:flex-row lg:items-center lg:space-x-8 rtl:space-x-reverse">
                 {this.props.links.map(({ text, href, links, type }, index) => (
                   <li
                     key={index}
@@ -107,8 +107,8 @@ class HeaderNavigation extends React.Component<
                   </li>
                 ))}
               </ul>
-              <div className="flex content-center justify-end px-2 pt-4 md:border-l-2 md:pt-0">
-                <ThemeSwitcher isTransparent={this.props.isTransparent && !this.state.showMenu} />
+              <div className="flex content-center justify-end px-2 pt-4 lg:border-l-2 lg:pt-0">
+                {/* <ThemeSwitcher isTransparent={this.props.isTransparent && !this.state.showMenu} /> */}
               </div>
             </div>
           </div>
@@ -174,7 +174,7 @@ class Link extends React.Component<LinkProps> {
     return (
       <a
         className={cn(
-          "block py-2 px-3 md:p-0 font-semibold hover:no-underline",
+          "block py-2 px-3 lg:p-0 font-semibold hover:no-underline",
           {
             "text-primary": this.props.active,
           },
@@ -248,7 +248,7 @@ class DropdownLink extends React.Component<
         <button
           aria-controls={this.id}
           aria-expanded={this.state.show ? "true" : "false"}
-          className={cn(this.props.isTransparent ? "text-white" : "text-foreground hover:text-primary", "block px-3 py-2 font-semibold hover:no-underline md:p-0")}
+          className={cn(this.props.isTransparent ? "text-white" : "text-foreground hover:text-primary", "block px-3 py-2 font-semibold hover:no-underline lg:p-0")}
           onClick={this.handleMenuToggle}
         >
           {this.props.text}{" "}
@@ -261,7 +261,7 @@ class DropdownLink extends React.Component<
         <ul
           id={this.id}
           className={cn(
-            "px-4 py-2 md:absolute bg-background min-w-40 md:border-2 border-t-0 border-l-0 z-50",
+            "px-4 py-2 lg:absolute bg-background min-w-40 lg:border-2 border-t-0 border-l-0 z-50",
             {
               block: this.state.show,
               hidden: !this.state.show,

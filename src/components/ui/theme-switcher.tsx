@@ -7,6 +7,9 @@ export const themeStorage = {
     return localStorage.setItem("color-theme", value);
   },
   get(): Theme {
+
+    return "light"
+
     let hasPreference = "color-theme" in localStorage;
     "color-theme" in localStorage;
     let colourTheme = localStorage.getItem("color-theme");

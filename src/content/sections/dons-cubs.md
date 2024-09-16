@@ -1,5 +1,6 @@
 ---
 title: Dons Cubs
+section: cub
 meeting:
   day: Wednesday
   start: " 19:00"

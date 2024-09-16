@@ -1,0 +1,16 @@
+{
+    "name": "Activity Trousers",
+    "thumbnail": "./media/activity-trousers.jpg",
+    "price": 25.00,
+    "colour": "Blue",
+    "required": "No",
+    "type": "Trousers",
+    "sections": [
+        "Squirrel",
+        "Beaver",
+        "Cub",
+        "Scout",
+        "Explorer",
+        "Leader"
+    ]
+}

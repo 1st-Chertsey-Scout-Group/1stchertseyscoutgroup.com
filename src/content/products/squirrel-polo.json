@@ -1,0 +1,11 @@
+{
+    "name": "Squirrel Polo",
+    "thumbnail": "./media/squirrel-polo.jpg",
+    "price": 13.00,
+    "colour": "Red",
+    "required": "Yes",
+    "type": "Polo",
+    "sections": [
+        "Squirrel"
+    ]
+}

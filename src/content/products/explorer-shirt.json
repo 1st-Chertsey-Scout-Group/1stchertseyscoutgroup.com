@@ -1,0 +1,11 @@
+{
+    "name": "Explorer Shirt",
+    "thumbnail": "./media/explorer-shirt.jpg",
+    "price": 25.00,
+    "colour": "Khaki",
+    "required": "Yes",
+    "type": "Shirt",
+    "sections": [
+        "Explorer"
+    ]
+}

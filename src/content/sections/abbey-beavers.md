@@ -1,5 +1,6 @@
 ---
 title: Abbey Beavers
+section: beaver
 meeting:
   day: Monday
   start: " 17:45"

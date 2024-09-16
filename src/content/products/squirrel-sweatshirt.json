@@ -1,0 +1,11 @@
+{
+    "name": "Squirrel Sweatshirt",
+    "thumbnail": "./media/squirrel-sweatshirt.jpg",
+    "price": 14.50,
+    "colour": "Red",
+    "required": "Yes",
+    "type": "Sweatshirt",
+    "sections": [
+        "Squirrel"
+    ]
+}

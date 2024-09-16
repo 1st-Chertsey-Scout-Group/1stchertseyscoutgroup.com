@@ -1,5 +1,6 @@
 ---
 title: Scouts
+section: scout
 meeting:
   day: Thursday
   start: " 19:15"

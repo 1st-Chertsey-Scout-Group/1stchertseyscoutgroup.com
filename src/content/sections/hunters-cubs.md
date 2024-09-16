@@ -1,5 +1,6 @@
 ---
 title: Hunters Cubs
+section: cub
 meeting:
   day: Monday
   start: " 19:00"

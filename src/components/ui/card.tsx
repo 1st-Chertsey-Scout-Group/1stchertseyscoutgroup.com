@@ -93,6 +93,7 @@ class CardCaption extends Component<CardCaptionProps, CardCaptionState> {
 type CardHeaderProps = {
   href?: string;
   children: React.ReactNode;
+  className?: string;
 };
 
 type CardHeaderState = {};
@@ -106,7 +107,7 @@ class CardHeader extends Component<CardHeaderProps, CardHeaderState> {
 
   render() {
     return (
-      <div className="text-xl pb-1 font-black">
+      <div className={cn("text-xl pb-1 font-black", this.props.className)}>
         {this.props.href ? (
           <a className="block text-card-foreground" href={this.props.href}>
             {this.props.children}

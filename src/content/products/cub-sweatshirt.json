@@ -1,0 +1,11 @@
+{
+    "name": "Cub Sweatshirt",
+    "thumbnail": "./media/cub-sweatshirt.jpg",
+    "price": 16.00,
+    "colour": "Green",
+    "required": "Yes",
+    "type": "Sweatshirt",
+    "sections": [
+        "Cub"
+    ]
+}

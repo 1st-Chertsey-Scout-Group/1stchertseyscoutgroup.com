@@ -1,0 +1,12 @@
+{
+    "name": "Beaver Sweatshirt",
+    "thumbnail": "./media/beaver-sweatshirt.jpg",
+    "hoverThumbnail": "./media/beaver-sweatshirt-hover.jpg",
+    "price": 15.50,
+    "colour": "Blue",
+    "required": "Yes",
+    "type": "Sweatshirt",
+    "sections": [
+        "Beaver"
+    ]
+}

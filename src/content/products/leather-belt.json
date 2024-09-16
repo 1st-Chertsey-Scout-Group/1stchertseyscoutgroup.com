@@ -1,0 +1,16 @@
+{
+    "name": "Leather Belt",
+    "thumbnail": "./media/leather-belt.jpg",
+    "price": 16.00,
+    "colour": "Black",
+    "required": "No",
+    "type": "Belt",
+    "sections": [
+        "Squirrel",
+        "Beaver",
+        "Cub",
+        "Scout",
+        "Explorer",
+        "Leader"
+    ]
+}
