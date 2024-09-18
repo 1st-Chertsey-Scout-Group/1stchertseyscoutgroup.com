@@ -14,6 +14,15 @@ export interface ShopStateFilter {
     options: ShopStateFilterOption[];
 }
 
+interface ContactInformation {
+    name: string;
+    ypName: string;
+    email: string;
+    group: string;
+    section: string;
+    additionalInformation: string;
+}
+
 enum SortOptions {
     "a-to-z" = "Name: A to Z",
     "z-to-a" = "Name: Z to A",
@@ -28,11 +37,12 @@ export interface ShopStateSort {
 
 type ShopState = {
     products: CollectionEntry<"products">[],
-    inBasket: {product: CollectionEntry<"products">, quantity: number}[],
+    inBasket: { product: CollectionEntry<"products">, quantity: number }[],
     categories: string[],
     mobileFiltersOpen: boolean,
     filters: ShopStateFilter[],
     sortOptions: ShopStateSort[]
+    contactInfo: ContactInformation | null
 }
 
 const initialState: ShopState = {
@@ -58,7 +68,8 @@ const initialState: ShopState = {
             name: SortOptions['high-to-low'],
             checked: false
         }
-    ]
+    ],
+    contactInfo: null
 }
 
 export const $shop = atom<ShopState>(initialState)
@@ -99,7 +110,7 @@ const addToBasket = (product: CollectionEntry<"products">) => {
     if (!isInCart(product.id)) {
         $shop.set({
             ...shop,
-            inBasket: [...shop.inBasket, {product, quantity: 1}]
+            inBasket: [...shop.inBasket, { product, quantity: 1 }]
         })
     }
 }
@@ -121,6 +132,16 @@ const setMobileFiltersOpen = (mobileFiltersOpen: boolean) => {
         mobileFiltersOpen
     })
 }
+
+const setContactInfo = (contactInfo: ContactInformation) => {
+    let shop = $shop.get();
+    $shop.set({
+        ...shop,
+        contactInfo
+    })
+}
+
+//
 
 const selectSortOption = (optionId: SortOptions) => {
     let shop = $shop.get();
@@ -238,9 +259,9 @@ const $filteredProducts = computed($shop, (shop) => {
 });
 
 const $totalPrice = computed($shop, (shop) => {
-    return shop.inBasket.length == 0 
-    ? 0 
-    : shop.inBasket.map(item => item.product.data.price).reduce((prev, next) => prev + next);
+    return shop.inBasket.length == 0
+        ? 0
+        : shop.inBasket.map(item => item.product.data.price).reduce((prev, next) => prev + next);
 })
 
 export const useShop = () => {
@@ -258,7 +279,8 @@ export const useShop = () => {
             removeFromBasket,
             setMobileFiltersOpen,
             toggleFilterOption,
-            selectSortOption
+            selectSortOption,
+            setContactInfo
         },
 
         isInCart

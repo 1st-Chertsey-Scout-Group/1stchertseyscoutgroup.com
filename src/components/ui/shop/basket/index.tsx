@@ -3,6 +3,7 @@ import { useShop } from "../shop.store";
 import { Field, Input, Label, Select, Textarea } from "@headlessui/react";
 import { Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 type BasketProps = {
 };
@@ -10,7 +11,11 @@ type BasketProps = {
 export const ShopBasketView: React.FC<BasketProps> = ({ }) => {
     const shop = useShop();
 
-    let sectionOptions = shop.filters.find((f) => f.id == "sections")
+    const { contactInfo, inBasket } = shop;
+
+    const handleSubmit = (e: React.FormEvent) => {
+        console.log("test");
+    }
 
     return (
         <>
@@ -18,73 +23,34 @@ export const ShopBasketView: React.FC<BasketProps> = ({ }) => {
                 <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 ded lg:grid-cols-2 xl:gap-48">
                     <h1 className="sr-only">Order information</h1>
                     <OrderSummary />
+                    <OrderForm onSubmit={handleSubmit} />
 
-                    <form className="px-4 pb-32 pt-8 sm:px-4 lg:col-start-1 lg:row-start-1 lg:px-0 lg:pb-8">
-                        <div className="mx-auto max-w-lg lg:max-w-none">
-                            <section aria-labelledby="contact-info-heading">
-                                <h2 id="contact-info-heading" className="text-lg font-medium">Contact information</h2>
-                                <div className="flex flex-col lg:flex-row justify-between gap-2">
-                                    <Field className={"flex-1"}>
-                                        <Label htmlFor="name" className="block font-medium text-sm">Name <span className="text-primary">*</span></Label>
-                                        <div className="mt-1">
-                                            <Input required={true} className="w-full drop-shadow" id="name" name="name" placeholder={"Bear Grylls"} />
-                                        </div>
-                                    </Field>
-                                    <Field className={"flex-1"}>
-                                        <Label htmlFor="yp-name" className="block font-medium text-sm">Young Person's name</Label>
-                                        <div className="mt-1">
-                                            <Input className="w-full drop-shadow" id="yp-name" name="yp-name" placeholder={"Jesse Grylls"} />
-                                        </div>
-                                    </Field>
-                                </div>
-                                <Field className="mt-4">
-                                    <Label htmlFor="email_address" className="block font-medium text-sm">Email Address <span className="text-primary">*</span></Label>
-                                    <div className="mt-1">
-                                        <Input className="w-full drop-shadow" id="email_address" name="email_address" placeholder="bear.grylls@email.com" />
-                                    </div>
-                                </Field>
-                            </section>
-                            <section aria-labelledby="order-info" className="mt-8">
-                                <h2 id="order-info-heading" className="text-lg font-medium">Order information</h2>
-                                <div className="flex flex-col lg:flex-row justify-between gap-2">
-                                    <Field className={"flex-1"}>
-                                        <Label htmlFor="group" className="block font-medium text-sm">Group <span className="text-primary">*</span></Label>
-                                        <div className="mt-1">
-                                            <Input className="w-full drop-shadow" id="group" name="group" defaultValue={"1st Chertsey"} placeholder={"1st Chertsey"} />
-                                        </div>
-                                    </Field>
-                                    <Field className={"flex-1"}>
-                                        <Label htmlFor="section" className="block font-medium text-sm">Section <span className="text-primary">*</span></Label>
-                                        <div className="mt-1">
-                                            <Select name="section" aria-label="Section" className="w-full drop-shadow">
-                                                <option value={undefined}>--- Please Select ---</option>
-                                                {
-                                                    sectionOptions && sectionOptions.options.map((option, index) => (
-                                                        <option key={index} value={option.value}>{option.label}</option>
-                                                    ))
-                                                }
-                                            </Select>
-                                        </div>
-                                    </Field>
-                                </div>
+                    {contactInfo && <code className="whitespace-pre-line bg-alternative p-4">
 
-                                <Field className="mt-4">
-                                    <Label htmlFor="additional_information" className="block font-medium text-sm">Additional Information</Label>
-                                    <div className="mt-1">
-                                        <Textarea className="w-full drop-shadow h-32" id="additional_information" name="additional_information"></Textarea>
-                                    </div>
-                                </Field>
-                            </section>
-                            <div className="mt-10 border-t border-gray-200 pt-6 lg:flex lg:center lg:justify-between">
-                                <button disabled={shop.inBasket.length == 0} className={cn(
-                                    shop.inBasket.length == 0 ? "bg-disabled text-disabled-foreground cursor-not-allowed opacity-50": "bg-primary text-primary-foreground",
-                                    "lg:order-last w-full lg:w-auto relative flex items-center justify-center border px-8 py-2 text-sm font-medium border border-transparent")}>
-                                    Request Uniform
-                                </button>
-                                <p className="mt-4 text-center text-sm lg:mt-0 lg:text-left">We will email you confirming your request</p>
-                            </div>
-                        </div>
-                    </form>
+                        {
+                            `
+EXAMPLE EMAIL
+
+Uniform order request:
+
+Name: ${contactInfo.name} (${contactInfo.ypName})
+Email: ${contactInfo.email}
+
+Group: ${contactInfo.group}
+Section: ${contactInfo.section}
+
+Requested Items:
+${inBasket.map((b) => " - " + b.product.data.name + " ( " + b.quantity + " ) ").join("\n")}
+
+Additional Information:
+${contactInfo.additionalInformation}
+
+`
+
+                        }
+                    </code>}
+
+
                 </div>
             </div>
         </>)
@@ -190,4 +156,100 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({ product, qua
             </li>
         </>
     )
+}
+
+
+type OrderFormProps = {
+    onSubmit: (e: React.FormEvent) => void;
+};
+export const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
+    const shop = useShop();
+
+    const [name, setName] = useState("");
+    const [ypName, setYPName] = useState("");
+    const [email, setEmail] = useState("");
+    const [group, setGroup] = useState("");
+    const [section, setSection] = useState("");
+    const [additionalInformation, setAdditionalInformation] = useState("");
+
+
+    let sectionOptions = shop.filters.find((f) => f.id == "sections")
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+
+        shop.actions.setContactInfo({ name, ypName, email, group, section, additionalInformation })
+
+        onSubmit(e)
+    }
+
+    return (
+        <>
+            <form className="px-4 pb-32 pt-8 sm:px-4 lg:col-start-1 lg:row-start-1 lg:px-0 lg:pb-8" onSubmit={handleSubmit}>
+                <div className="mx-auto max-w-lg lg:max-w-none">
+                    <section aria-labelledby="contact-info-heading">
+                        <h2 id="contact-info-heading" className="text-lg font-medium">Contact information</h2>
+                        <div className="flex flex-col lg:flex-row justify-between gap-2">
+                            <Field className={"flex-1"}>
+                                <Label htmlFor="name" className="block font-medium text-sm">Name <span className="text-primary">*</span></Label>
+                                <div className="mt-1">
+                                    <Input required={true} className="w-full drop-shadow" id="name" name="name" placeholder={"Bear Grylls"} value={name} onChange={e => setName(e.target.value)} />
+                                </div>
+                            </Field>
+                            <Field className={"flex-1"}>
+                                <Label htmlFor="yp-name" className="block font-medium text-sm">Young Person's name</Label>
+                                <div className="mt-1">
+                                    <Input className="w-full drop-shadow" id="yp-name" name="yp-name" placeholder={"Jesse Grylls"} value={ypName} onChange={e => setYPName(e.target.value)} />
+                                </div>
+                            </Field>
+                        </div>
+                        <Field className="mt-4">
+                            <Label htmlFor="email_address" className="block font-medium text-sm">Email Address <span className="text-primary">*</span></Label>
+                            <div className="mt-1">
+                                <Input className="w-full drop-shadow" id="email_address" name="email_address" placeholder="bear.grylls@email.com" value={email} onChange={e => setEmail(e.target.value)} />
+                            </div>
+                        </Field>
+                    </section>
+                    <section aria-labelledby="order-info" className="mt-8">
+                        <h2 id="order-info-heading" className="text-lg font-medium">Order information</h2>
+                        <div className="flex flex-col lg:flex-row justify-between gap-2">
+                            <Field className={"flex-1"}>
+                                <Label htmlFor="group" className="block font-medium text-sm">Group <span className="text-primary">*</span></Label>
+                                <div className="mt-1">
+                                    <Input className="w-full drop-shadow" id="group" name="group" defaultValue={"1st Chertsey"} placeholder={"1st Chertsey"} value={group} onChange={e => setGroup(e.target.value)} />
+                                </div>
+                            </Field>
+                            <Field className={"flex-1"}>
+                                <Label htmlFor="section" className="block font-medium text-sm">Section <span className="text-primary">*</span></Label>
+                                <div className="mt-1">
+                                    <Select name="section" aria-label="Section" className="w-full drop-shadow" value={section} onChange={e => setSection(e.target.value)}>
+                                        <option value={undefined}>--- Please Select ---</option>
+                                        {
+                                            sectionOptions && sectionOptions.options.map((option, index) => (
+                                                <option key={index} value={option.value}>{option.label}</option>
+                                            ))
+                                        }
+                                    </Select>
+                                </div>
+                            </Field>
+                        </div>
+
+                        <Field className="mt-4">
+                            <Label htmlFor="additional_information" className="block font-medium text-sm">Additional Information</Label>
+                            <div className="mt-1">
+                                <Textarea className="w-full drop-shadow h-32" id="additional_information" name="additional_information" value={additionalInformation} onChange={e => setAdditionalInformation(e.target.value)}></Textarea>
+                            </div>
+                        </Field>
+                    </section>
+                    <div className="mt-10 border-t border-gray-200 pt-6 lg:flex lg:center lg:justify-between">
+                        <button disabled={shop.inBasket.length == 0} className={cn(
+                            shop.inBasket.length == 0 ? "bg-disabled text-disabled-foreground cursor-not-allowed opacity-50" : "bg-primary text-primary-foreground",
+                            "lg:order-last w-full lg:w-auto relative flex items-center justify-center border px-8 py-2 text-sm font-medium border border-transparent")}>
+                            Request Uniform
+                        </button>
+                        <p className="mt-4 text-center text-sm lg:mt-0 lg:text-left">We will email you confirming your request</p>
+                    </div>
+                </div>
+            </form>
+        </>)
 }
