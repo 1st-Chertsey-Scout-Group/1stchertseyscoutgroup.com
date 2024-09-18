@@ -1,7 +1,6 @@
 import type { CollectionEntry } from "astro:content";
 import { useShop } from "../shop.store";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 
 type ProductListProps = {
 };

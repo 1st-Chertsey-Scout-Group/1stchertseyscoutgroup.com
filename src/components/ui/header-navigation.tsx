@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Container } from "./container";
-import { ThemeSwitcher } from "./theme-switcher";
 import type { ActionLink, MenuLink } from "@/types";
 import { ChevronDown, ChevronUp, Menu, X } from "lucide-react";
 import { assertIsNode, cn } from "@/lib/utils";

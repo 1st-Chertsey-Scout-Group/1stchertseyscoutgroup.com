@@ -1,7 +1,7 @@
 import type { CollectionEntry } from "astro:content";
 import { useShop } from "../shop.store";
-import { Description, Field, Input, Label, Select, Textarea } from "@headlessui/react";
-import { Trash, Trash2 } from "lucide-react";
+import { Field, Input, Label, Select, Textarea } from "@headlessui/react";
+import { Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type BasketProps = {

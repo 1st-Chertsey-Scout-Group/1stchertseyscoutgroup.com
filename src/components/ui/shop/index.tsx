@@ -3,14 +3,8 @@
 import type { CollectionEntry } from "astro:content";
 import React, { useEffect } from "react";
 
-import { useShop, type ShopStateSort } from "./shop.store";
-import { ProductList } from "./product-listings/product-list";
+import { useShop } from "./shop.store";
 
-import { ChevronDown, Filter } from 'lucide-react'
-import { cn } from "@/lib/utils";
-import { MobileDialog } from "./product-listings/mobile-dialog";
-import { ShopFilterList } from "./product-listings/filter-list";
-import { ShopSort } from "./product-listings/sort-menu";
 import { ShopProductListingsView } from "./product-listings";
 import { ShopBasketView } from "./basket";
 
