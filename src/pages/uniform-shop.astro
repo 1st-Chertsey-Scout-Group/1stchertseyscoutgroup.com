@@ -7,5 +7,5 @@ const items = await getCollection("products");
 ---
 
 <PageLayout title="Uniform Shop">
-    <Shop client:load products={items} />
+    <Shop client:only products={items} />
 </PageLayout>
