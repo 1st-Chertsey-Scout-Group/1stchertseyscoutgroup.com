@@ -4,7 +4,7 @@
 
 interface ImportMetaEnv {
     readonly ALTCHA_API_KEY: string;
-    readonly ALTCHA_API_SECRET: string;
+    readonly BASE_API_URL: string;
     // more env variables...
 }
 

@@ -7,9 +7,10 @@ import { Loader, Send, SendHorizonal, ThumbsUp } from "lucide-react";
 import { submitMessage } from "./api/submit-message.api";
 
 type ContactFormProps = {
+    BASE_API_URL: string;
     ALTCHA_API_KEY: string;
 };
-export const ContactForm: React.FC<ContactFormProps> = ({ ALTCHA_API_KEY }) => {
+export const ContactForm: React.FC<ContactFormProps> = ({ BASE_API_URL, ALTCHA_API_KEY }) => {
     const contact = useContact();
 
     const { email, firstName, lastName, message, subject, topic, altcha } = contact;
@@ -19,7 +20,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ ALTCHA_API_KEY }) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        submitMessage(firstName, lastName, email, topic, subject, message, altcha)
+        submitMessage(BASE_API_URL, firstName, lastName, email, topic, subject, message, altcha)
             .then(({ success }) => {
                 if (success) {
                     setView("Success");

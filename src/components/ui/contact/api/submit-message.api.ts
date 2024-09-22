@@ -1,5 +1,6 @@
 
 export const submitMessage = (
+    baseUrl: string,
     firstName: string,
     lastName: string,
     email: string,
@@ -9,8 +10,7 @@ export const submitMessage = (
     altcha: string,
 ): Promise<{ success: boolean }> => {
     return new Promise((resolve, reject) => {
-        let { BASE_API_URL } = import.meta.env;
-        fetch(BASE_API_URL + "/ContactForm", {
+        fetch(baseUrl + "/ContactForm", {
             method: "POST", body: JSON.stringify({
                 firstName,
                 lastName,

@@ -11,11 +11,12 @@ import { submitOrder } from "./api/submit-order.api";
 import { useShopContactInfo } from "./state/contact-info.store";
 
 type ShopProps = {
+    BASE_API_URL: string;
     ALTCHA_API_KEY: string;
     products: CollectionEntry<"products">[]
 };
 
-export const Shop: React.FC<ShopProps> = ({ ALTCHA_API_KEY, products }) => {
+export const Shop: React.FC<ShopProps> = ({ BASE_API_URL, ALTCHA_API_KEY, products }) => {
     const shop = useShop();
     const contactInfo = useShopContactInfo();
 
@@ -26,12 +27,26 @@ export const Shop: React.FC<ShopProps> = ({ ALTCHA_API_KEY, products }) => {
 
     let [view, setView] = useState<"Form" | "Success" | "Failure">("Form");
 
+    const { inBasket } = shop;
+    const { name, ypName, email, group, section, additionalInformation, altcha } = contactInfo;
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        const { name, ypName, email, group, section, additionalInformation, altcha } = contactInfo;
 
-        submitOrder(name, ypName, email, group, section, additionalInformation, altcha)
+        let message = additionalInformation;
+
+        message += "\n";
+        message += "Uniform Request:\n"
+
+        for (let i = 0; i < inBasket.length; i++) {
+            const item = inBasket[i];
+
+            message += ` - ${item.product.data.name} [${item.quantity}]`
+        }
+
+
+        submitOrder(BASE_API_URL, name, ypName, email, group, section, message, altcha)
             .then(({ success }) => {
                 if (success) {
                     setView("Success");
@@ -74,7 +89,7 @@ const SuccessView: React.FC<SuccessViewProps> = ({ }) => {
                     <h1 className="sr-only">Order complete</h1>
                     <div className="flex flex-col text-center mt-10">
                         <div className="text-4xl">Thank you, {contactInfo.name}!</div>
-                        <div className="pt-4">We have received your message and will get back to you shortly.</div>
+                        <div className="pt-4">We have received your request and will get back to you shortly.</div>
                     </div>
                     <OrderSummary readonly={true} />
                 </div>
