@@ -1,5 +1,5 @@
 import type { CollectionEntry } from "astro:content";
-import { useShop } from "../shop.store";
+import { useShop } from "../state/shop.store";
 import { cn } from "@/lib/utils";
 
 type ProductListProps = {

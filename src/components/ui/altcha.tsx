@@ -43,6 +43,7 @@ const Altcha = forwardRef<{ value: string | null }, AltchaProps>(({ ALTCHA_API_K
             style={{
                 '--altcha-max-width': '100%',
             }}
+            test
             challengeurl={`https://eu.altcha.org/api/v1/challenge?apiKey=${ALTCHA_API_KEY}`}
         ></altcha-widget>
     )

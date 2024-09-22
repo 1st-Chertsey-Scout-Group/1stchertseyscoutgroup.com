@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { MenuButton, MenuItems, MenuItem, Menu } from "@headlessui/react";
 import { ChevronDown } from "lucide-react";
-import { useShop, type ShopStateSort } from "../shop.store";
+import { useShop, type ShopStateSort } from "../state/shop.store";
 
 type ShopSortProps = {
     sortOptions: ShopStateSort[]

@@ -1,7 +1,7 @@
 {
     "name": "Beaver Polo",
     "thumbnail": "./media/beaver-polo.jpg",
-    "price": 14.00,
+    "price": 15.00,
     "colour": "Blue",
     "required": "Yes",
     "type": "Polo",

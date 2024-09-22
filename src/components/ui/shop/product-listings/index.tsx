@@ -1,5 +1,5 @@
 import { Filter } from "lucide-react";
-import { useShop } from "../shop.store";
+import { useShop } from "../state/shop.store";
 import { ShopFilterList } from "./filter-list";
 import { MobileDialog } from "./mobile-dialog";
 import { ProductList } from "./product-list";

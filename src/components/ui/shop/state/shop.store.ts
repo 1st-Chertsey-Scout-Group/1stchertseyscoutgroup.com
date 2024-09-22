@@ -14,15 +14,6 @@ export interface ShopStateFilter {
     options: ShopStateFilterOption[];
 }
 
-interface ContactInformation {
-    name: string;
-    ypName: string;
-    email: string;
-    group: string;
-    section: string;
-    additionalInformation: string;
-}
-
 enum SortOptions {
     "a-to-z" = "Name: A to Z",
     "z-to-a" = "Name: Z to A",
@@ -42,7 +33,6 @@ type ShopState = {
     mobileFiltersOpen: boolean,
     filters: ShopStateFilter[],
     sortOptions: ShopStateSort[]
-    contactInfo: ContactInformation | null
 }
 
 const initialState: ShopState = {
@@ -68,8 +58,7 @@ const initialState: ShopState = {
             name: SortOptions['high-to-low'],
             checked: false
         }
-    ],
-    contactInfo: null
+    ]
 }
 
 export const $shop = atom<ShopState>(initialState)
@@ -132,16 +121,6 @@ const setMobileFiltersOpen = (mobileFiltersOpen: boolean) => {
         mobileFiltersOpen
     })
 }
-
-const setContactInfo = (contactInfo: ContactInformation) => {
-    let shop = $shop.get();
-    $shop.set({
-        ...shop,
-        contactInfo
-    })
-}
-
-//
 
 const selectSortOption = (optionId: SortOptions) => {
     let shop = $shop.get();
@@ -264,6 +243,7 @@ const $totalPrice = computed($shop, (shop) => {
         : shop.inBasket.map(item => item.product.data.price).reduce((prev, next) => prev + next);
 })
 
+
 export const useShop = () => {
     const shop = useStore($shop);
     const filteredProducts = useStore($filteredProducts);
@@ -280,7 +260,6 @@ export const useShop = () => {
             setMobileFiltersOpen,
             toggleFilterOption,
             selectSortOption,
-            setContactInfo
         },
 
         isInCart

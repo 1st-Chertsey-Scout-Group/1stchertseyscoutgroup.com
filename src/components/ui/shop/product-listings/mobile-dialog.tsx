@@ -1,5 +1,5 @@
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
-import { useShop } from "../shop.store";
+import { useShop } from "../state/shop.store";
 import { X } from "lucide-react";
 import { ShopFilterList } from "./filter-list";
 

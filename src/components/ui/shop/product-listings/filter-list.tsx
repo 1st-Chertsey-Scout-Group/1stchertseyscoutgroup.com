@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Disclosure, DisclosureButton, DisclosurePanel } from "@headlessui/react";
 import { Plus, Minus } from "lucide-react";
-import { useShop, type ShopStateFilter, type ShopStateFilterOption } from "../shop.store";
+import { useShop, type ShopStateFilter, type ShopStateFilterOption } from "../state/shop.store";
 
 type FilterProps = {
     type: "mobile" | "desktop";

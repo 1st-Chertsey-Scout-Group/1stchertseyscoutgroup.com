@@ -1,20 +1,22 @@
 import type { CollectionEntry } from "astro:content";
-import { useShop } from "../shop.store";
+import { useShop } from "../state/shop.store";
 import { Field, Input, Label, Select, Textarea } from "@headlessui/react";
-import { Trash2 } from "lucide-react";
+import { Loader, SendHorizonal, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { useShopContactInfo } from "../state/contact-info.store";
+import Altcha from "../../altcha";
 
 type BasketProps = {
+    ALTCHA_API_KEY: string;
+    onSubmit: (e: React.FormEvent) => void;
 };
 
-export const ShopBasketView: React.FC<BasketProps> = ({ }) => {
+export const ShopBasketView: React.FC<BasketProps> = ({ ALTCHA_API_KEY, onSubmit }) => {
     const shop = useShop();
 
-    const { contactInfo, inBasket } = shop;
-
     const handleSubmit = (e: React.FormEvent) => {
-        console.log("test");
+        onSubmit(e);
     }
 
     return (
@@ -22,35 +24,8 @@ export const ShopBasketView: React.FC<BasketProps> = ({ }) => {
             <div className="relative border-t border-gray-200 pt-12">
                 <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 ded lg:grid-cols-2 xl:gap-48">
                     <h1 className="sr-only">Order information</h1>
-                    <OrderSummary />
-                    <OrderForm onSubmit={handleSubmit} />
-
-                    {contactInfo && <code className="whitespace-pre-line bg-alternative p-4">
-
-                        {
-                            `
-EXAMPLE EMAIL
-
-Uniform order request:
-
-Name: ${contactInfo.name} (${contactInfo.ypName})
-Email: ${contactInfo.email}
-
-Group: ${contactInfo.group}
-Section: ${contactInfo.section}
-
-Requested Items:
-${inBasket.map((b) => " - " + b.product.data.name + " ( " + b.quantity + " ) ").join("\n")}
-
-Additional Information:
-${contactInfo.additionalInformation}
-
-`
-
-                        }
-                    </code>}
-
-
+                    <OrderSummary readonly={false} />
+                    <OrderForm ALTCHA_API_KEY={ALTCHA_API_KEY} onSubmit={handleSubmit} />
                 </div>
             </div>
         </>)
@@ -58,8 +33,9 @@ ${contactInfo.additionalInformation}
 
 
 type OrderSummaryProps = {
+    readonly: boolean
 };
-export const OrderSummary: React.FC<OrderSummaryProps> = () => {
+export const OrderSummary: React.FC<OrderSummaryProps> = ({ readonly }) => {
     const shop = useShop();
 
 
@@ -81,7 +57,7 @@ export const OrderSummary: React.FC<OrderSummaryProps> = () => {
                             <>
                                 <ul role="list" className="text-sm font-medium">
                                     {shop.inBasket && shop.inBasket.map((product, index) => (
-                                        <OrderSummaryItem key={index} product={product.product} quantity={product.quantity} />
+                                        <OrderSummaryItem readonly={readonly} key={index} product={product.product} quantity={product.quantity} />
                                     ))}
                                 </ul>
                             </>
@@ -101,16 +77,25 @@ export const OrderSummary: React.FC<OrderSummaryProps> = () => {
 
 type OrderSummaryItemProps = {
     product: CollectionEntry<"products">
-    quantity: number
+    quantity: number,
+    readonly: boolean
 };
-export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({ product, quantity }) => {
+export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({ product, quantity, readonly }) => {
     const shop = useShop();
 
     const { thumbnail, name, price, colour } = product.data;
     const formattedPrice = price.toFixed(2);
 
     const handleRemoveItem = () => {
-        shop.actions.removeFromBasket(product);
+        if (!readonly) {
+            shop.actions.removeFromBasket(product);
+        }
+    }
+
+    const updateQuantity = () => {
+        if (!readonly) {
+            // DO SOMETHING
+        }
     }
 
     return (
@@ -131,25 +116,32 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({ product, qua
                             <p className="mt-1 text-sm">{colour}</p>
                         </div>
                         <div className="ml-4 flow-root shrink-0">
-                            <button type="button" className="-m-2.5 flex items-center justify-center p-2.5 bla" onClick={handleRemoveItem}>
-                                <span className="sr-only">Remove</span>
-                                <Trash2 />
-                            </button>
+                            {!readonly && (
+                                <button type="button" className="-m-2.5 flex items-center justify-center p-2.5 bla" onClick={handleRemoveItem}>
+                                    <span className="sr-only">Remove</span>
+                                    <Trash2 />
+                                </button>
+                            )}
+
                         </div>
                     </div>
                     <div className="flex flex-1 items-end justify-between pt-2">
                         <p className="mt-1 text-sm font-medium">£{formattedPrice}</p>
                         <div className="ml-4">
-                            <label htmlFor="quantity" className="sr-only">
-                                Quantity
-                            </label>
-                            <select defaultValue={quantity} id="quantity" name="quantity" className="border border-gray-200 text-left text-base font-medium shadow bmo bnc lg:text-sm bnt">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
+                            {!readonly && (
+                                <>
+                                    <label htmlFor="quantity" className="sr-only">
+                                        Quantity
+                                    </label>
+                                    <select defaultValue={quantity} id="quantity" name="quantity" className="border border-gray-200 text-left text-base font-medium shadow bmo bnc lg:text-sm bnt">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -160,27 +152,39 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({ product, qua
 
 
 type OrderFormProps = {
+    ALTCHA_API_KEY: string;
     onSubmit: (e: React.FormEvent) => void;
 };
-export const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
+export const OrderForm: React.FC<OrderFormProps> = ({ ALTCHA_API_KEY, onSubmit }) => {
     const shop = useShop();
+    const contactInfo = useShopContactInfo();
 
-    const [name, setName] = useState("");
-    const [ypName, setYPName] = useState("");
-    const [email, setEmail] = useState("");
-    const [group, setGroup] = useState("");
-    const [section, setSection] = useState("");
-    const [additionalInformation, setAdditionalInformation] = useState("");
+    const { additionalInformation, altcha, email, group, name, section, ypName } = contactInfo;
+    const { setEmail, setAdditionalInformation, setGroup, setName, setSection, setYPName, setAltcha } = contactInfo.actions;
+    const { formValid } = contactInfo;
 
+    const [isSubmit, setIsSubmit] = useState(false);
 
     let sectionOptions = shop.filters.find((f) => f.id == "sections")
+
+    const handleAltchaChange = (e: CustomEvent<{ payload: string | null, state: "verifying" | "verified" }>) => {
+
+        if (e.detail) {
+            let { payload, state } = e.detail;
+
+            if (state == "verified" && payload) {
+                setAltcha(payload);
+            }
+        }
+    }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        shop.actions.setContactInfo({ name, ypName, email, group, section, additionalInformation })
-
-        onSubmit(e)
+        if (!isSubmit) {
+            onSubmit(e);
+            setIsSubmit(true);
+        }
     }
 
     return (
@@ -193,20 +197,20 @@ export const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
                             <Field className={"flex-1"}>
                                 <Label htmlFor="name" className="block font-medium text-sm">Name <span className="text-primary">*</span></Label>
                                 <div className="mt-1">
-                                    <Input required={true} className="w-full drop-shadow" id="name" name="name" placeholder={"Bear Grylls"} value={name} onChange={e => setName(e.target.value)} />
+                                    <Input required={true} type="text" className="w-full drop-shadow" id="name" name="name" placeholder={"Bear Grylls"} value={name} onChange={(e: any) => setName(e.target.value)} />
                                 </div>
                             </Field>
                             <Field className={"flex-1"}>
                                 <Label htmlFor="yp-name" className="block font-medium text-sm">Young Person's name</Label>
                                 <div className="mt-1">
-                                    <Input className="w-full drop-shadow" id="yp-name" name="yp-name" placeholder={"Jesse Grylls"} value={ypName} onChange={e => setYPName(e.target.value)} />
+                                    <Input className="w-full drop-shadow" type="text" id="yp-name" name="yp-name" placeholder={"Jesse Grylls"} value={ypName} onChange={(e: any) => setYPName(e.target.value)} />
                                 </div>
                             </Field>
                         </div>
                         <Field className="mt-4">
                             <Label htmlFor="email_address" className="block font-medium text-sm">Email Address <span className="text-primary">*</span></Label>
                             <div className="mt-1">
-                                <Input className="w-full drop-shadow" id="email_address" name="email_address" placeholder="bear.grylls@email.com" value={email} onChange={e => setEmail(e.target.value)} />
+                                <Input className="w-full drop-shadow" type="email" id="email_address" name="email_address" placeholder="bear.grylls@email.com" value={email} onChange={(e: any) => setEmail(e.target.value)} />
                             </div>
                         </Field>
                     </section>
@@ -216,13 +220,13 @@ export const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
                             <Field className={"flex-1"}>
                                 <Label htmlFor="group" className="block font-medium text-sm">Group <span className="text-primary">*</span></Label>
                                 <div className="mt-1">
-                                    <Input className="w-full drop-shadow" id="group" name="group" defaultValue={"1st Chertsey"} placeholder={"1st Chertsey"} value={group} onChange={e => setGroup(e.target.value)} />
+                                    <Input className="w-full drop-shadow" type="text" id="group" name="group" placeholder={"1st Chertsey"} value={group} onChange={(e: any) => setGroup(e.target.value)} />
                                 </div>
                             </Field>
                             <Field className={"flex-1"}>
                                 <Label htmlFor="section" className="block font-medium text-sm">Section <span className="text-primary">*</span></Label>
                                 <div className="mt-1">
-                                    <Select name="section" aria-label="Section" className="w-full drop-shadow" value={section} onChange={e => setSection(e.target.value)}>
+                                    <Select name="section" aria-label="Section" className="w-full drop-shadow" value={section} onChange={(e: any) => setSection(e.target.value)}>
                                         <option value={undefined}>--- Please Select ---</option>
                                         {
                                             sectionOptions && sectionOptions.options.map((option, index) => (
@@ -237,17 +241,20 @@ export const OrderForm: React.FC<OrderFormProps> = ({ onSubmit }) => {
                         <Field className="mt-4">
                             <Label htmlFor="additional_information" className="block font-medium text-sm">Additional Information</Label>
                             <div className="mt-1">
-                                <Textarea className="w-full drop-shadow h-32" id="additional_information" name="additional_information" value={additionalInformation} onChange={e => setAdditionalInformation(e.target.value)}></Textarea>
+                                <Textarea className="w-full drop-shadow h-32" id="additional_information" name="additional_information" value={additionalInformation} onChange={(e: any) => setAdditionalInformation(e.target.value)}></Textarea>
                             </div>
                         </Field>
                     </section>
-                    <div className="mt-10 border-t border-gray-200 pt-6 lg:flex lg:center lg:justify-between">
-                        <button disabled={shop.inBasket.length == 0} className={cn(
-                            shop.inBasket.length == 0 ? "bg-disabled text-disabled-foreground cursor-not-allowed opacity-50" : "bg-primary text-primary-foreground",
-                            "lg:order-last w-full lg:w-auto relative flex items-center justify-center border px-8 py-2 text-sm font-medium border border-transparent")}>
-                            Request Uniform
+                    <div className="mt-10 border-t border-gray-200 pt-6 flex lg:center lg:justify-between flex-col gap-2">
+                        <Altcha
+                            ALTCHA_API_KEY={ALTCHA_API_KEY}
+                            onStateChange={(e: any) => handleAltchaChange(e)} />
+                        <button disabled={!formValid || isSubmit} type="submit" className={cn(
+                            !formValid || isSubmit ? "bg-disabled text-disabled-foreground cursor-not-allowed opacity-50" : "bg-primary text-primary-foreground",
+                            "lg:order-last w-full lg:w-auto relative flex items-center justify-center border px-8 py-2 text-sm font-medium border border-transparent duration-0")}>
+
+                            {isSubmit ? (<><span className="mr-2">Requesting Uniform </span><Loader className="animate-spin" /></>) : (<><span className="mr-2">Request Uniform </span> <SendHorizonal /></>)}
                         </button>
-                        <p className="mt-4 text-center text-sm lg:mt-0 lg:text-left">We will email you confirming your request</p>
                     </div>
                 </div>
             </form>

@@ -12,12 +12,12 @@ type ContactState = {
 }
 
 const initialState: ContactState = {
-    firstName: "Tim",
-    lastName: "Cane",
-    email: "timjcane@gmail.com",
-    topic: "general-enquiry",
-    subject: "Subject",
-    message: "HELLO",
+    firstName: "",
+    lastName: "",
+    email: "",
+    topic: "",
+    subject: "",
+    message: "",
     altcha: ""
 }
 

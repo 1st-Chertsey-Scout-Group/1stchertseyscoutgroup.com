@@ -79,7 +79,7 @@ const FormView: React.FC<FormViewProps> = ({ ALTCHA_API_KEY, onSubmit }) => {
 
     return (
         <>
-            <form action="#" method='post' className="px-4 pb-32 pt-8 sm:px-4 lg:col-start-1 lg:row-start-1 lg:px-0 lg:pb-8 w-full" onSubmit={handleSubmit}>
+            <form action="#" method='post' onSubmit={handleSubmit}>
                 <div className="">
                     <section aria-labelledby="contact-info-heading">
                         <h2 id="contact-info-heading" className="text-lg font-medium">Your details</h2>

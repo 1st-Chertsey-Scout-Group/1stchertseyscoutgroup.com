@@ -1,23 +1,22 @@
 
-export const submitMessage = (
-    firstName: string,
-    lastName: string,
+export const submitOrder = (
+    name: string,
+    ypName: string,
     email: string,
-    topic: string,
-    subject: string,
-    message: string,
+    group: string,
+    section: string,
+    additionalInformation: string,
     altcha: string,
 ): Promise<{ success: boolean }> => {
     return new Promise((resolve, reject) => {
         let { BASE_API_URL } = import.meta.env;
         fetch(BASE_API_URL + "/ContactForm", {
             method: "POST", body: JSON.stringify({
-                firstName,
-                lastName,
+                firstName: name,
                 email,
-                topic,
-                subject,
-                message,
+                topic: "uniform-request",
+                subject: `${group} - ${section} ${ypName == "" ? "" : ` (${ypName})`}`,
+                message: additionalInformation == "" ? "" : additionalInformation,
                 altcha,
             }),
             headers: new Headers({ 'content-type': 'application/json' }),

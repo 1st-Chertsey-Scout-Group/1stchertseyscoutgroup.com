@@ -10,7 +10,9 @@ const { ALTCHA_API_KEY } = import.meta.env;
 </script>
 
 <PageLayout title="Get In Touch">
-  <div class="grid lg:grid-cols-2 gap-4">
+  <div
+    class="grid lg:grid-cols-2 gap-4 px-4 pb-32 pt-8 sm:px-4 lg:col-start-1 lg:row-start-1 lg:px-0 lg:pb-8 w-full"
+  >
     <div>
       <ContactForm client:only ALTCHA_API_KEY={ALTCHA_API_KEY} />
     </div>
