@@ -1,0 +1,11 @@
+{
+    "name": "Cub Polo",
+    "thumbnail": "./media/cub-polo.jpg",
+    "price": 16.00,
+    "colour": "Green",
+    "required": "Yes",
+    "type": "Polo",
+    "sections": [
+        "Cub"
+    ]
+}

@@ -36,9 +36,17 @@ export default {
         DEFAULT: "var(--secondary)",
         foreground: "var(--secondary-foreground)",
       },
+      tertiary: {
+        DEFAULT: "var(--tertiary)",
+        foreground: "var(--tertiary-foreground)",
+      },
       card: {
         DEFAULT: "var(--card)",
         foreground: "var(--card-foreground)",
+      },
+      disabled: {
+        DEFAULT: "var(--disabled)",
+        foreground: "var(--disabled-foreground)",
       },
     },
     extend: {
@@ -77,5 +85,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require('@tailwindcss/forms'), require("tailwindcss-animate")],
 }

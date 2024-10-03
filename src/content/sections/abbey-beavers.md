@@ -1,22 +1,23 @@
 ---
 title: Abbey Beavers
+section: beaver
 meeting:
   day: Monday
   start: " 17:45"
   end: " 18:45"
 
 leaders:
-  - role: Beaver Leader
+  - role: Team Leader
     name: Kathy
-  - role: Beaver Leader
+  - role: Team Leader
     name: Sally
-  - role: Beaver Leader
+  - role: Team Leader
     name: Katy
-  - role: Beaver Leader
+  - role: Team Leader
     name: Lisa
-  - role: Beaver Leader
+  - role: Team Leader
     name: Rosy
-  - role: Beaver Leader
+  - role: Team Leader
     name: Laura
 
 latestNews:

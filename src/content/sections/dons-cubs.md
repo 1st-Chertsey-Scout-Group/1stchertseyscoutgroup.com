@@ -1,15 +1,16 @@
 ---
 title: Dons Cubs
+section: cub
 meeting:
   day: Wednesday
   start: " 19:00"
   end: " 20:30"
 leaders:
-  - role: Cub Leader
+  - role: Team Leader
     name: Richard
-  - role: Cub Leader
+  - role: Team Leader
     name: Emma
-  - role: Cub Leader
+  - role: Team Leader
     name: Steve
 
 latestNews:

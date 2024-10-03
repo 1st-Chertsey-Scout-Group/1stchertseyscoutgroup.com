@@ -1,15 +1,16 @@
 ---
 title: Hunters Cubs
+section: cub
 meeting:
   day: Monday
   start: " 19:00"
   end: " 20:30"
 leaders:
-  - role: Cub Leader
+  - role: Team Leader
     name: Mike
-  - role: Cub Leader
+  - role: Team Leader
     name: Steve
-  - role: Cub Leader
+  - role: Team Leader
     name: Ben
 
 latestNews:

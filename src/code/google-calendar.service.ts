@@ -24,8 +24,6 @@ export class GoogleCalendarService {
             }
         }
 
-        console.log(events)
-
         return events;
     }
 

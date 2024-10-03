@@ -1,0 +1,11 @@
+{
+    "name": "Scout Shirt",
+    "thumbnail": "./media/scout-shirt.jpg",
+    "price": 22.00,
+    "colour": "Teal",
+    "required": "Yes",
+    "type": "Shirt",
+    "sections": [
+        "Scout"
+    ]
+}
