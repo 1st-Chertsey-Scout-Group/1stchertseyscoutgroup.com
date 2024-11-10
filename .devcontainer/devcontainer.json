@@ -24,7 +24,8 @@
 		"vscode": {
 			"extensions": [
 				"astro-build.astro-vscode",
-				"ms-playwright.playwright"
+				"ms-playwright.playwright",
+				"unifiedjs.vscode-mdx"
 			]
 		}
 	},

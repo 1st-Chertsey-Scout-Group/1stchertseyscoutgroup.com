@@ -2,7 +2,7 @@
 title: Walking Challenge
 date: 2023-02-18T00:00:00.000Z
 author: Toby Athersuch
-thumbnail: ./media/Walk_Runnymede_v2-723x1024.png
+thumbnail: ./Walk_Runnymede_v2-723x1024.png
 excerpt: Cub Leaders and Young Leaders tackle 22-mile trek to 11 Scout HQs in Runnymede on April 1st, 2023, fundraising for White Lodge Centre.
 tags:
   - Fundraiser
@@ -20,4 +20,4 @@ We’ll keep you posted on progress!
 
 Please donate what you can to support our fundraiser /Here’s the link: [Just Giving](https://www.justgiving.com/page/chertseyscoutswalkathonforwhitelodge)
 
-![Walking Challenge Flyer](./media/Walk_Runnymede_v2-723x1024.png)
+![Walking Challenge Flyer](./Walk_Runnymede_v2-723x1024.png)
