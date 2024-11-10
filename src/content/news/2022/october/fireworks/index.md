@@ -1,8 +1,8 @@
 ---
-title: Fireworks – 5th November 2022 – SOLD OUT
+title: Fireworks
 date: 2022-10-17T00:00:00.000Z
 author: Toby Athersuch
-thumbnail: ./media/Fireworks-Flyer-2022-SOLD-OUT.png
+thumbnail: ./Fireworks-Flyer-2022-SOLD-OUT.png
 excerpt: Join us at Chertsey Cricket Club on November 5th, 2022, for a spectacular evening!
 tags:
   - Fundraiser
@@ -35,4 +35,4 @@ Please arrive early to avoid disappointment. 🕢
 
 Note: For safety reasons, use of sparklers will NOT be permitted on site. Please DO NOT bring them. 🚫
 
-![Fireworks flyer - sold out](./media/Fireworks-Flyer-2022-SOLD-OUT.png)
+![Fireworks flyer - sold out](./Fireworks-Flyer-2022-SOLD-OUT.png)
