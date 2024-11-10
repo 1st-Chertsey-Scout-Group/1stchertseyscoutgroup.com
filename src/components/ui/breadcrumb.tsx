@@ -66,8 +66,8 @@ class Breadcrumb extends Component<BreadcrumbProps, BreadcrumbState> {
                 location={false}
                 minimise={true}
               />
-              {this.state.items.map((props) => (
-                <BreadcrumbItem {...props} />
+              {this.state.items.map((props, index) => (
+                <BreadcrumbItem key={index} {...props} />
               ))}
             </ul>
             <div>

@@ -7,7 +7,10 @@ export const themeStorage = {
     return localStorage.setItem("color-theme", value);
   },
   get(): Theme {
-    let hasPreference = "color-theme" in localStorage;
+
+    return "light"
+
+    /*let hasPreference = "color-theme" in localStorage;
     "color-theme" in localStorage;
     let colourTheme = localStorage.getItem("color-theme");
     let prefersDarkScheme = window.matchMedia(
@@ -18,7 +21,7 @@ export const themeStorage = {
       return "dark";
     } else {
       return "light";
-    }
+    }*/
   },
 };
 

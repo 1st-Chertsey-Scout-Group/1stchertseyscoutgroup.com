@@ -1,5 +1,6 @@
 ---
 title: Explorers
+section: explorer
 meeting:
   day: Tuesday
   start: " 20:00"

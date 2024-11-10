@@ -70,6 +70,11 @@ export const navigation: Array<MenuLink | ActionLink> = [
     text: "News",
     href: "/news",
   },
+  /*{
+    type: "link",
+    text: "Uniform Shop",
+    href: "/uniform-shop",
+  },*/
   {
     type: "action",
     text: "Donate",

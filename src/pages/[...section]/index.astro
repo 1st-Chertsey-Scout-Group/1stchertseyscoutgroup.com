@@ -27,6 +27,7 @@ const {
     meeting,
     leaders,
     title,
+    section: sectionName,
     latestNews,
     uniform,
     badges,
@@ -98,6 +99,12 @@ const {
           </Card>
         )
       }
+
+<Card>
+  <CardBody className="bg-tertiary text-tertiary-foreground text-center p-0">
+    <a class="text-xl block text-tertiary-foreground" href={"/uniform-shop?section=" + sectionName}>Need Uniform?</a>
+  </CardBody>
+</Card>
     </div>
 
     <div class="md:col-span-12 lg:col-span-4 pb-5 md:pb-0">

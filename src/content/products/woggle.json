@@ -1,0 +1,13 @@
+{
+    "name": "Woggle",
+    "thumbnail": "./media/woggle.jpg",
+    "price": 0.25,
+    "colour": "Assorted",
+    "required": "Yes",
+    "type": "Woggle",
+    "sections": [
+        "Squirrel",
+        "Beaver",
+        "Cub"
+    ]
+}

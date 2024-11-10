@@ -1,20 +1,21 @@
 ---
 title: Scouts
+section: scout
 meeting:
   day: Thursday
   start: " 19:15"
   end: " 21:00"
   
 leaders:
-  - role: Scout Leader
+  - role: Team Leader
     name: Tim
-  - role: Scout Leader
+  - role: Team Leader
     name: Paul
-  - role: Scout Leader
+  - role: Team Leader
     name: Dave
-  - role: Assistant Scout Leader
+  - role: Team Leader
     name: Andy
-  - role: Assistant Scout Leader
+  - role: Team Leader
     name: Simon
 
 latestNews:

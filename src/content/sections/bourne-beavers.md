@@ -1,16 +1,17 @@
 ---
 title: Bourne Beavers
+section: beaver
 meeting:
   day: Thursday
   start: " 18:00"
   end: " 19:00"
 
 leaders:
-  - role: Beaver Leader
+  - role: Team Leader
     name: Alex
-  - role: Beaver Leader
+  - role: Team Leader
     name: Shaun
-  - role: Beaver Leader
+  - role: Team Leader
     name: Dan
 
 latestNews:

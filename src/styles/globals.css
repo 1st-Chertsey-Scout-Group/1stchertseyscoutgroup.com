@@ -22,6 +22,12 @@
     --secondary: #17508b;
     --secondary-foreground: #ffffff;
 
+    --tertiary: #6310bc;
+    --tertiary-foreground: #ffffff;
+
+    --disabled: #f1f1f1;
+    --disabled-foreground: #0c0a09;
+
     --border: #e7e5e4;
 
     --radius: 0.5rem;
