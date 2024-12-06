@@ -4,14 +4,9 @@ import { Shop } from "@/components/ui/shop";
 import { getCollection } from "astro:content";
 
 const items = await getCollection("products");
-const { ALTCHA_API_KEY, BASE_API_URL } = import.meta.env;
+const { BASE_API_URL } = import.meta.env;
 ---
 
 <PageLayout title="Uniform Shop">
-    <Shop
-        client:only
-        ALTCHA_API_KEY={ALTCHA_API_KEY}
-        BASE_API_URL={BASE_API_URL}
-        products={items}
-    />
+    <Shop client:only BASE_API_URL={BASE_API_URL} products={items} />
 </PageLayout>

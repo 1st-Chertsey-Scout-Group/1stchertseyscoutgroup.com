@@ -9,7 +9,7 @@ export const submitOrder = (
     altcha: string,
 ): Promise<{ success: boolean }> => {
     return new Promise((resolve, reject) => {
-        fetch(baseUrl + "/ContactForm", {
+        fetch(baseUrl + "/enquiry", {
             method: "POST", body: JSON.stringify({
                 firstName: name,
                 email,

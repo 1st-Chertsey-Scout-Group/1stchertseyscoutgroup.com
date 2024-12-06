@@ -12,11 +12,10 @@ import { useShopContactInfo } from "./state/contact-info.store";
 
 type ShopProps = {
     BASE_API_URL: string;
-    ALTCHA_API_KEY: string;
     products: CollectionEntry<"products">[]
 };
 
-export const Shop: React.FC<ShopProps> = ({ BASE_API_URL, ALTCHA_API_KEY, products }) => {
+export const Shop: React.FC<ShopProps> = ({ BASE_API_URL, products }) => {
     const shop = useShop();
     const contactInfo = useShopContactInfo();
 
@@ -34,16 +33,20 @@ export const Shop: React.FC<ShopProps> = ({ BASE_API_URL, ALTCHA_API_KEY, produc
         e.preventDefault();
 
 
-        let message = additionalInformation;
+        let message = `<p>${additionalInformation}</p>`;
 
-        message += "\n";
-        message += "Uniform Request:\n"
+        message += `<p>
+        <b>Uniform Request:</b>
+        </p>`
 
+        message += "<ul>"
         for (let i = 0; i < inBasket.length; i++) {
             const item = inBasket[i];
 
-            message += ` - ${item.product.data.name} [${item.quantity}]`
+            message += `<li>${item.product.data.name} [${item.quantity}]</li>`
         }
+
+        message += "</ul>"
 
 
         submitOrder(BASE_API_URL, name, ypName, email, group, section, message, altcha)
@@ -65,7 +68,7 @@ export const Shop: React.FC<ShopProps> = ({ BASE_API_URL, ALTCHA_API_KEY, produc
         <div>
             {view == "Form" && <>
                 <ShopProductListingsView />
-                <ShopBasketView ALTCHA_API_KEY={ALTCHA_API_KEY} onSubmit={handleSubmit} />
+                <ShopBasketView BASE_API_URL={BASE_API_URL} onSubmit={handleSubmit} />
             </>}
             {view == "Success" && <SuccessView />}
             {view == "Failure" && <FailureView />}

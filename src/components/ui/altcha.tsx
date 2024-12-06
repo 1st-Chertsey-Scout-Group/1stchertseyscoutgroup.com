@@ -4,11 +4,11 @@ import { useEffect, useRef, useState, forwardRef, useImperativeHandle } from 're
 import 'altcha'
 
 interface AltchaProps {
-    ALTCHA_API_KEY: string;
+    BASE_API_URL: string;
     onStateChange?: (ev: Event | CustomEvent) => void;
 }
 
-const Altcha = forwardRef<{ value: string | null }, AltchaProps>(({ ALTCHA_API_KEY, onStateChange }, ref) => {
+const Altcha = forwardRef<{ value: string | null }, AltchaProps>(({ BASE_API_URL,onStateChange }, ref) => {
     const widgetRef = useRef<HTMLElement>(null)
     const [value, setValue] = useState<string | null>(null)
 
@@ -43,8 +43,7 @@ const Altcha = forwardRef<{ value: string | null }, AltchaProps>(({ ALTCHA_API_K
             style={{
                 '--altcha-max-width': '100%',
             }}
-            test
-            challengeurl={`https://eu.altcha.org/api/v1/challenge?apiKey=${ALTCHA_API_KEY}`}
+            challengeurl={`${BASE_API_URL}/altcha-challenge`}
         ></altcha-widget>
     )
 })

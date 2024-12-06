@@ -8,11 +8,11 @@ import { useShopContactInfo } from "../state/contact-info.store";
 import Altcha from "../../altcha";
 
 type BasketProps = {
-    ALTCHA_API_KEY: string;
+    BASE_API_URL: string;
     onSubmit: (e: React.FormEvent) => void;
 };
 
-export const ShopBasketView: React.FC<BasketProps> = ({ ALTCHA_API_KEY, onSubmit }) => {
+export const ShopBasketView: React.FC<BasketProps> = ({ BASE_API_URL, onSubmit }) => {
     const shop = useShop();
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -25,7 +25,7 @@ export const ShopBasketView: React.FC<BasketProps> = ({ ALTCHA_API_KEY, onSubmit
                 <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 ded lg:grid-cols-2 xl:gap-48">
                     <h1 className="sr-only">Order information</h1>
                     <OrderSummary readonly={false} />
-                    <OrderForm ALTCHA_API_KEY={ALTCHA_API_KEY} onSubmit={handleSubmit} />
+                    <OrderForm BASE_API_URL={BASE_API_URL} onSubmit={handleSubmit} />
                 </div>
             </div>
         </>)
@@ -152,10 +152,10 @@ export const OrderSummaryItem: React.FC<OrderSummaryItemProps> = ({ product, qua
 
 
 type OrderFormProps = {
-    ALTCHA_API_KEY: string;
+    BASE_API_URL: string;
     onSubmit: (e: React.FormEvent) => void;
 };
-export const OrderForm: React.FC<OrderFormProps> = ({ ALTCHA_API_KEY, onSubmit }) => {
+export const OrderForm: React.FC<OrderFormProps> = ({ BASE_API_URL, onSubmit }) => {
     const shop = useShop();
     const contactInfo = useShopContactInfo();
 
@@ -247,7 +247,7 @@ export const OrderForm: React.FC<OrderFormProps> = ({ ALTCHA_API_KEY, onSubmit }
                     </section>
                     <div className="mt-10 border-t border-gray-200 pt-6 flex lg:center lg:justify-between flex-col gap-2">
                         <Altcha
-                            ALTCHA_API_KEY={ALTCHA_API_KEY}
+                            BASE_API_URL={BASE_API_URL}
                             onStateChange={(e: any) => handleAltchaChange(e)} />
                         <button disabled={!formValid || isSubmit} type="submit" className={cn(
                             !formValid || isSubmit ? "bg-disabled text-disabled-foreground cursor-not-allowed opacity-50" : "bg-primary text-primary-foreground",

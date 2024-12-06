@@ -15,7 +15,7 @@ const initialState: ContactState = {
     firstName: "",
     lastName: "",
     email: "",
-    topic: "",
+    topic: "general-enquiry",
     subject: "",
     message: "",
     altcha: ""

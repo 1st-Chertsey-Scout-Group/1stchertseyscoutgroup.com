@@ -8,9 +8,8 @@ import { submitMessage } from "./api/submit-message.api";
 
 type ContactFormProps = {
     BASE_API_URL: string;
-    ALTCHA_API_KEY: string;
 };
-export const ContactForm: React.FC<ContactFormProps> = ({ BASE_API_URL, ALTCHA_API_KEY }) => {
+export const ContactForm: React.FC<ContactFormProps> = ({ BASE_API_URL }) => {
     const contact = useContact();
 
     const { email, firstName, lastName, message, subject, topic, altcha } = contact;
@@ -36,7 +35,7 @@ export const ContactForm: React.FC<ContactFormProps> = ({ BASE_API_URL, ALTCHA_A
     return (
         <>
 
-            {view == "Form" && <FormView ALTCHA_API_KEY={ALTCHA_API_KEY} onSubmit={handleSubmit} />}
+            {view == "Form" && <FormView BASE_API_URL={BASE_API_URL} onSubmit={handleSubmit} />}
             {view == "Success" && <SuccessView />}
             {view == "Failure" && <FailureView />}
         </>
@@ -45,10 +44,10 @@ export const ContactForm: React.FC<ContactFormProps> = ({ BASE_API_URL, ALTCHA_A
 
 
 type FormViewProps = {
-    ALTCHA_API_KEY: string;
+    BASE_API_URL: string;
     onSubmit: (e: React.FormEvent) => void;
 };
-const FormView: React.FC<FormViewProps> = ({ ALTCHA_API_KEY, onSubmit }) => {
+const FormView: React.FC<FormViewProps> = ({ BASE_API_URL, onSubmit }) => {
     const contact = useContact();
 
     const { email, firstName, lastName, message, subject, topic } = contact;
@@ -153,8 +152,7 @@ const FormView: React.FC<FormViewProps> = ({ ALTCHA_API_KEY, onSubmit }) => {
                         </Field>
                     </section>
                     <div className="mt-10 border-t border-gray-200 pt-6 flex lg:center lg:justify-between flex-col gap-2">
-                        <Altcha
-                            ALTCHA_API_KEY={ALTCHA_API_KEY}
+                        <Altcha BASE_API_URL={BASE_API_URL}
                             onStateChange={(e: any) => handleAltchaChange(e)} />
                         <button disabled={!formValid || isSubmit} type="submit" className={cn(
                             !formValid || isSubmit ? "bg-disabled text-disabled-foreground cursor-not-allowed opacity-50" : "bg-primary text-primary-foreground",
