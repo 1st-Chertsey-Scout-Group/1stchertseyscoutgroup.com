@@ -1,9 +1,0 @@
-# Configure Netlify builds.
-[build]
-  publish = "dist"
-  command = "npm run build"
-
-[[redirects]]
-from = "/*"
-to = "/page-not-found"
-status = 404
