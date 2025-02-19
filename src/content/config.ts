@@ -73,22 +73,7 @@ const sectionsCollection = defineCollection({
     }),
 });
 
-const productsCollection = defineCollection({
-  type: "data",
-  schema: ({ image }) =>
-    z.object({
-      name: z.string(),
-      thumbnail: image().optional(),
-      colour: z.string(),
-      price: z.number(),
-      sections: z.string().array(),
-      required: z.enum(["Yes", "No"]),
-      type: z.string()
-    }),
-});
-
 export const collections = {
-  products: productsCollection,
   news: newsCollection,
   sections: sectionsCollection,
 };
