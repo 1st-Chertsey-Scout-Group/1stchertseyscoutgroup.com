@@ -1,18 +1,25 @@
 import { defineConfig } from 'astro/config';
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import pageInsight from "astro-page-insight";
 import sitemap from "@astrojs/sitemap";
 
 import mdx from "@astrojs/mdx";
+
+import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), tailwind({
     applyBaseStyles: false
-  }), pageInsight(), sitemap(), mdx()],
+  }), sitemap(), mdx()],
+
   build: {
     assets: "_assets"
   },
-  site: "https://1stchertseyscoutgroup.com/"
+
+  site: "https://1stchertseyscoutgroup.com/",
+
+  adapter: node({
+    mode: "standalone"
+  })
 });
