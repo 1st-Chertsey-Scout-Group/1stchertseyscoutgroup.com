@@ -1,4 +1,7 @@
 ---
+export const prerender = false;
+Astro.response.headers.set("Cache-Control", "public, max-age=3600");
+
 import { GoogleCalendarService } from "@/code/google-calendar.service";
 import GroupDiaryList from "@/components/widgets/group-diary-list.astro";
 import PageLayout from "@/layouts/page.layout.astro";
