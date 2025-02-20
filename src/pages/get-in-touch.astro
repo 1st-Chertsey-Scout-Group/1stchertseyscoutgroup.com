@@ -1,20 +1,181 @@
 ---
-import PageLayout from "@/layouts/page.layout.astro";
----
+export const prerender = false;
 
-<script>
-  import("altcha");
-</script>
+import {
+  getOptions,
+  getFormData,
+  isFormDataValid,
+  sendEnquiryEmail,
+} from "@/code/contact";
+import FormSelectOption from "@/components/form/form-select-option.astro";
+import PageLayout from "@/layouts/page.layout.astro";
+import {
+  SMTP_HOST,
+  SMTP_PASSWORD,
+  SMTP_PORT,
+  SMTP_ALIAS,
+  SMTP_DOMAIN,
+} from "astro:env/server";
+import { SendHorizonal } from "lucide-react";
+
+let response: "form" | "success" | "error" = "form";
+
+let options = await getOptions();
+
+if (Astro.request.method === "POST") {
+  const formData = getFormData(await Astro.request.formData(), options);
+
+  if (isFormDataValid(formData)) {
+    response = "success";
+    sendEnquiryEmail(formData, {
+      SMTP_HOST,
+      SMTP_PASSWORD,
+      SMTP_PORT,
+      SMTP_ALIAS,
+      SMTP_DOMAIN,
+    })
+      .then((v) => {
+        console.log(v.response);
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  } else {
+    response = "error";
+  }
+}
+---
 
 <PageLayout title="Get In Touch">
   <div
     class="grid lg:grid-cols-2 gap-4 px-4 pb-32 pt-8 sm:px-4 lg:col-start-1 lg:row-start-1 lg:px-0 lg:pb-8 w-full"
   >
-    <div></div>
     <div>
-      The 1st Chertsey Scout HQ is located in Chertsey, close to local parks and
-      woods. Our newly-completed base has easy access for all, and plenty of
-      parking space outside.
+      <form method="post">
+        <input class="hidden" name="number" />
+        <div class="">
+          <section aria-labelledby="contact-info-heading">
+            <h2 id="contact-info-heading" class="text-lg font-medium">
+              Your details
+            </h2>
+            <div class="flex flex-col lg:flex-row justify-between gap-2">
+              <div class={"flex-1"}>
+                <label for="firstName" class="block font-medium text-sm"
+                  >First name <span class="text-primary">*</span></label
+                >
+                <div class="mt-1">
+                  <input
+                    required={true}
+                    class="w-full drop-shadow"
+                    id="firstName"
+                    name="firstName"
+                    placeholder={"Bear"}
+                  />
+                </div>
+              </div>
+              <div class={"flex-1"}>
+                <label for="lastName" class="block font-medium text-sm"
+                  >Last name</label
+                >
+                <div class="mt-1">
+                  <input
+                    class="w-full drop-shadow"
+                    id="lastName"
+                    name="lastName"
+                    placeholder={"Grylls"}
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <label for="email" class="block font-medium text-sm"
+                >Email Address <span class="text-primary">*</span></label
+              >
+              <div class="mt-1">
+                <input
+                  required={true}
+                  type="email"
+                  class="w-full drop-shadow"
+                  id="email"
+                  name="email"
+                  placeholder="bear.grylls@email.com"
+                />
+              </div>
+            </div>
+          </section>
+          <section aria-labelledby="order-info" class="mt-8">
+            <h2 id="order-info-heading" class="text-lg font-medium">Enquiry</h2>
+            <div class="flex flex-col lg:flex-row justify-between gap-2">
+              <div class={"flex-1"}>
+                <label for="topic" class="block font-medium text-sm"
+                  >Topic <span class="text-primary">*</span></label
+                >
+                <div class="mt-1">
+                  <select
+                    id="topic"
+                    name="topic"
+                    aria-label="Topic"
+                    class="w-full drop-shadow"
+                  >
+                    {
+                      options &&
+                        options.map((option) => (
+                          <FormSelectOption option={option} />
+                        ))
+                    }
+                  </select>
+                </div>
+              </div>
+              <div class={"flex-1"}>
+                <label for="subject" class="block font-medium text-sm"
+                  >Subject <span class="text-primary">*</span></label
+                >
+                <div class="mt-1">
+                  <input
+                    required={true}
+                    class="w-full drop-shadow"
+                    id="subject"
+                    name="subject"
+                    placeholder={"How can we help"}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <label for="message" class="block font-medium text-sm"
+                >Your message <span class="text-primary">*</span></label
+              >
+              <div class="mt-1">
+                <textarea
+                  required={true}
+                  class="w-full drop-shadow h-32"
+                  id="message"
+                  name="message"
+                  placeholder="Leave a comment..."></textarea>
+              </div>
+            </div>
+          </section>
+          <div
+            class="mt-10 border-t border-gray-200 pt-6 flex lg:center lg:justify-between flex-col gap-2"
+          >
+            <button
+              type="submit"
+              class="bg-primary text-primary-foreground lg:order-last w-full lg:w-auto relative flex items-center justify-center border px-8 py-2 text-sm font-medium border border-transparent duration-0"
+            >
+              <span class="mr-2">Send message </span>
+              <SendHorizonal />
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div>
+      <p>
+        The 1st Chertsey Scout HQ is located in Chertsey, close to local parks
+        and woods. Our newly-completed base has easy access for all, and plenty
+        of parking space outside.
+      </p>
 
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4309.540643369194!2d-0.5045704219587034!3d51.39350835983362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48767792a09dbd7b%3A0x6fd3b0bba98c6c55!2s1st%20Chertsey%20Scout%20Group!5e0!3m2!1sen!2suk!4v1681488046033!5m2!1sen!2suk"
@@ -25,8 +186,15 @@ import PageLayout from "@/layouts/page.layout.astro";
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-      Postal address: 1st Chertsey Scout Group Scout HQ Staines Lane Chertsey
-      Surrey KT16 8PS
+      <div>
+        <b>Postal address:</b>
+        <div>1st Chertsey Scout Group</div>
+        <div>Scout HQ</div>
+        <div>Staines Lane</div>
+        <div>Chertsey</div>
+        <div>Surrey</div>
+        <div>KT16 8PS</div>
+      </div>
     </div>
   </div>
 </PageLayout>
