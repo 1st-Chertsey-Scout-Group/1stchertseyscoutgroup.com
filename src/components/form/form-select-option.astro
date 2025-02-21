@@ -1,0 +1,22 @@
+---
+import { type Option } from "@/code/interfaces/option.interface";
+import type { OptionGroup } from "@/code/interfaces/option-group.interface";
+
+interface Props {
+    option: Option | OptionGroup;
+}
+
+const { option }: Props = Astro.props;
+---
+
+{
+    option.type == "group" && (
+        <optgroup label={option.label}>
+            {option.options.map((childOption) => (
+                <Astro.self option={childOption} />
+            ))}
+        </optgroup>
+    )
+}
+
+{option.type == "option" && <option value={option.id}>{option.label}</option>}
