@@ -31,6 +31,16 @@ export default defineConfig({
       SMTP_DOMAIN: envField.string({ context: "server", access: "public" }),
       SMTP_ALIAS: envField.string({ context: "server", access: "public" }),
       SMTP_PASSWORD: envField.string({ context: "server", access: "secret" }),
+
+
+
+      FORM_ID: envField.string({ context: "server", access: "public" }),
+      FORM_FIELD_FIRSTNAME: envField.string({ context: "server", access: "public" }),
+      FORM_FIELD_LASTNAME: envField.string({ context: "server", access: "public" }),
+      FORM_FIELD_EMAIL: envField.string({ context: "server", access: "public" }),
+      FORM_FIELD_TOPIC: envField.string({ context: "server", access: "public" }),
+      FORM_FIELD_SUBJECT: envField.string({ context: "server", access: "public" }),
+      FORM_FIELD_MESSAGE: envField.string({ context: "server", access: "public" }),
     }
   }
 });
