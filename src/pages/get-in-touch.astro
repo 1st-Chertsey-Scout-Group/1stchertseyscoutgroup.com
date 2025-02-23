@@ -6,6 +6,7 @@ import {
   getFormData,
   isFormDataValid,
   sendEnquiryEmail,
+  updateGoogleForm,
 } from "@/code/contact";
 import FormSelectOption from "@/components/form/form-select-option.astro";
 import PageLayout from "@/layouts/page.layout.astro";
@@ -15,6 +16,13 @@ import {
   SMTP_PORT,
   SMTP_ALIAS,
   SMTP_DOMAIN,
+  FORM_ID,
+  FORM_FIELD_FIRSTNAME,
+  FORM_FIELD_LASTNAME,
+  FORM_FIELD_EMAIL,
+  FORM_FIELD_TOPIC,
+  FORM_FIELD_SUBJECT,
+  FORM_FIELD_MESSAGE,
 } from "astro:env/server";
 import { SendHorizonal } from "lucide-react";
 
@@ -36,6 +44,22 @@ if (Astro.request.method === "POST") {
     })
       .then((v) => {
         console.log(v.response);
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+
+    updateGoogleForm(formData, {
+      FORM_ID,
+      FORM_FIELD_EMAIL,
+      FORM_FIELD_FIRSTNAME,
+      FORM_FIELD_LASTNAME,
+      FORM_FIELD_MESSAGE,
+      FORM_FIELD_SUBJECT,
+      FORM_FIELD_TOPIC,
+    })
+      .then((v) => {
+        console.log(`Update Google Form: ${v.status}`);
       })
       .catch((e) => {
         console.error(e);
