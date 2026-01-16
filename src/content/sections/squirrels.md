@@ -8,15 +8,17 @@ meeting:
 
 leaders:
   - role: Team Leader
-    name: Kathy
-  - role: Team Leader
-    name: Tracy
-  - role: Team Leader
     name: Katy
-  - role: Team Leader
-    name: Sara
-  - role: Team Leader
-    name: Laura
+  - role: Team Member
+    name: Kathy
+  - role: Team Member
+    name: Tracy
+  - role: Team Member
+    name: Gina
+  - role: Young Leader
+    name: Freya
+  - role: Young Leader
+    name: Mary
 
 latestNews:
   caption: Find out whats on the programme this term
