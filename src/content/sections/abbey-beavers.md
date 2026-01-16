@@ -8,17 +8,21 @@ meeting:
 
 leaders:
   - role: Team Leader
-    name: Kathy
-  - role: Team Leader
-    name: Sally
-  - role: Team Leader
     name: Katy
-  - role: Team Leader
-    name: Lisa
-  - role: Team Leader
+  - role: Team Member
     name: Rosy
-  - role: Team Leader
+  - role: Team Member
+    name: Lisa
+  - role: Team Member
     name: Laura
+  - role: Team Member
+    name: Kathy
+  - role: Young Leader
+    name: Ed
+  - role: Young Leader
+    name: Will
+  - role: Young Leader
+    name: Maya
 
 latestNews:
   caption: Find out whats on the programme this term

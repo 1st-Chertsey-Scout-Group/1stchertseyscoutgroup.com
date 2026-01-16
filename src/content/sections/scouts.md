@@ -17,6 +17,8 @@ leaders:
     name: Andy
   - role: Team Leader
     name: Simon
+  - role: Young Leader
+    name: Orla
 
 latestNews:
   caption: Find out whats on the programme this term
